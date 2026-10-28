@@ -22,6 +22,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | attrs | 26.1.0 | MIT |
 | certifi | 2026.10.23 | Mozilla Public License 2.0 (MPL 2.0) |
 | charset-normalizer | 3.5.2 | MIT |
+| cloth_simulation_filter | 1.1.7 | Apache-2.0 |
 | colorama | 0.4.6 | BSD License |
 | contourpy | 1.4.0 | BSD-3-Clause |
 | cycler | 0.12.1 | BSD License |
@@ -67,7 +68,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | typer | 0.27.3 | MIT |
 | typing-inspection | 0.4.4 | MIT |
 | typing_extensions | 4.16.0 | PSF-2.0 |
-| tzdata | 2026.5 | Apache-2.0 |
+| tzdata | 2026.6 | Apache-2.0 |
 | urllib3 | 2.8.0 | MIT |
 | vtk | 9.7.1 | BSD License |
 
