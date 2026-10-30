@@ -144,29 +144,33 @@ If no step succeeds, no class is chosen and the line says so.
 
 ## 5. Starting the service
 
-The model runs in **another Python interpreter**, Pointcept's (torch,
-spconv, flash-attn, clip). cdforge does not depend on it.
+SNAP runs in the **AI module** (*Help ▸ AI module…*): a separate Python
+that carries torch, CUDA and SNAP, installed once into
+`~/.local/share/cdforge/ia`. It needs an NVIDIA GPU, RTX 20xx or newer.
+Everything else in cdforge works without it.
 
 The “Semantic assistance (SNAP)” panel of the Label tab:
 
 - **Start** launches the service and stops it with the window. The first
-  load takes 5 to 10 s.
-- **Settings…** sets the interpreter and the cloned SNAP repository
-  (`git clone https://github.com/neu-vi/SNAP`). Both are suggested
-  automatically when they are found.
-- **Missing checkpoints** are downloaded from the official repository links
-  (about 200 MB each), into `~/.cache/cdforge/models/snap/`. Their
-  fingerprint is checked: a checkpoint is a pickle, and only the authors'
-  file is loaded.
-- **The service log** is `~/.cache/cdforge/models/snap/service.log`.
-
-You can also start the service yourself. The annotator finds it at the
-address `CDFORGE_ASSIST_URL`, by default `http://127.0.0.1:8765`:
-
-```
-<Pointcept python> cdforge/annotate/snap_server.py --repo ~/SNAP \
-    --checkpoint snap-c=SNAP_C.pth --checkpoint snap-outdoor=SNAP_Outdoor.pth
-```
+  load takes 5 to 10 s. If the AI module is not installed, Start offers to
+  install it.
+- **Checkpoints** are not part of the module. On the first start, cdforge
+  offers to download the chosen model and the comparison one from the
+  official repository links (about 200 MB each), into
+  `~/.cache/cdforge/models/snap/`. Their fingerprint is checked: a
+  checkpoint is a pickle, and only the authors' file is loaded.
+  **Settings… ▸ Download the missing checkpoints** fetches all eight at
+  once.
+- **If Google Drive refuses** the download (quota exceeded), the message
+  gives the file's address: download it with the browser and put it in
+  `~/.cache/cdforge/models/snap/`.
+- **The service log** is `~/.cache/cdforge/models/snap/service.log`. If the
+  service stops while starting, the window shows its last lines.
+- **Settings…** shows the interpreter and the SNAP repository in use — the
+  AI module's — and the state of each checkpoint. There is nothing to
+  change there, unless you want to use your own Pointcept environment
+  (torch, spconv, flash-attn, clip) and a clone of SNAP
+  (`git clone https://github.com/neu-vi/SNAP`).
 
 ---
 

@@ -147,29 +147,34 @@ signale.
 
 ## 5. Démarrer le service
 
-Le modèle tourne dans **un autre interpréteur Python**, celui de Pointcept
-(torch, spconv, flash-attn, clip). cdforge n'en dépend pas.
+SNAP tourne dans le **module IA** (*Aide ▸ Module IA…*) : un Python à part,
+qui porte torch, CUDA et SNAP, installé une fois dans
+`~/.local/share/cdforge/ia`. Il demande une carte NVIDIA, RTX 20xx ou plus
+récente. Sans lui, le reste de cdforge fonctionne.
 
 Le panneau « Assistance sémantique (SNAP) » de l'onglet Étiqueter :
 
 - **Démarrer** lance le service et l'arrête avec la fenêtre. Le premier
-  chargement prend 5 à 10 s.
-- **Réglages…** désigne l'interpréteur et le dépôt SNAP cloné
-  (`git clone https://github.com/neu-vi/SNAP`). Les deux sont proposés
-  automatiquement quand on les trouve.
-- **Les points de contrôle absents** sont téléchargés depuis les liens du
-  dépôt officiel (environ 200 Mo chacun), vers `~/.cache/cdforge/models/snap/`.
-  Leur empreinte est vérifiée : un point de contrôle est un pickle, et l'on
-  ne charge que le fichier des auteurs.
+  chargement prend 5 à 10 s. Si le module IA n'est pas installé, Démarrer
+  propose de l'installer.
+- **Les points de contrôle** ne sont pas dans le module. Au premier
+  démarrage, cdforge propose de télécharger le modèle choisi et celui de
+  comparaison, depuis les liens du dépôt officiel (environ 200 Mo chacun),
+  vers `~/.cache/cdforge/models/snap/`. Leur empreinte est vérifiée : un
+  point de contrôle est un pickle, et l'on ne charge que le fichier des
+  auteurs. **Réglages… ▸ Télécharger les points de contrôle absents**
+  récupère les huit d'un coup.
+- **Si Google Drive refuse** le téléchargement (quota dépassé), le message
+  donne l'adresse du fichier : le télécharger avec le navigateur et le
+  poser dans `~/.cache/cdforge/models/snap/`.
 - **Le journal** du service est `~/.cache/cdforge/models/snap/service.log`.
-
-On peut aussi lancer le service soi-même. L'annotateur le trouve à
-l'adresse `CDFORGE_ASSIST_URL`, par défaut `http://127.0.0.1:8765` :
-
-```
-<python de Pointcept> cdforge/annotate/snap_server.py --repo ~/SNAP \
-    --checkpoint snap-c=SNAP_C.pth --checkpoint snap-outdoor=SNAP_Outdoor.pth
-```
+  Si le service s'arrête au démarrage, la fenêtre en montre les dernières
+  lignes.
+- **Réglages…** montre l'interpréteur et le dépôt SNAP employés — ceux du
+  module IA — et l'état de chaque point de contrôle. Il n'y a rien à y
+  changer, sauf pour employer son propre environnement Pointcept (torch,
+  spconv, flash-attn, clip) et un clone de SNAP
+  (`git clone https://github.com/neu-vi/SNAP`).
 
 ---
 
