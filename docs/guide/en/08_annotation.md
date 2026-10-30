@@ -18,7 +18,7 @@ Every change is saved tile by tile as you edit: a crash only loses the gesture i
 
 **Edit target** — the **layer** (semantic or change, **L** to switch) and the **epoch**.
 
-**Classes** — the list for the active layer; **1** to **9** and **0** pick a class, **A** applies it to the selection. **Digits 1–9, 0** sets what a digit does: **Pick, then A** (the default) or **Apply**, which applies the class as soon as you type the digit; A applies in both cases.
+**Classes** — the list for the active layer; **1** to **9** and **0** pick a class, **A** applies it to the selection. **Digits 1–9, 0** sets what a digit does: **Pick, then A** (the default) or **Apply**, which applies the class as soon as you type the digit; A applies in both cases. A class added or changed in **Project ▸ Project classes** shows up in the list without reopening the annotator.
 
 **On the selection** — apply the class (A), select the whole class (S), grow or shrink (+ / −), propagate to the other epoch (T), object change (K), validate auto → manual (V), uncertain (I), unlabelled (U), set points aside from the dataset (Del) and restore them (Shift+Del), clear the selection (Esc), undo and redo.
 

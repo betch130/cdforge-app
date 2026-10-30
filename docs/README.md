@@ -1,6 +1,6 @@
 # Guide de l'utilisateur
 
-Le même guide que dans l'application (**F1**, ou le bouton **?** de chaque étape), pour la version 0.1.3. *English below.*
+Le même guide que dans l'application (**F1**, ou le bouton **?** de chaque étape), pour la version 0.1.4. *English below.*
 
 1. [Prise en main](guide/01_prise_en_main.md)
 2. [Créer et configurer un projet](guide/02_projet.md)
@@ -26,7 +26,7 @@ Pour aller plus loin :
 
 # User guide
 
-The same guide as in the application (**F1**, or the **?** button on each stage), for version 0.1.3.
+The same guide as in the application (**F1**, or the **?** button on each stage), for version 0.1.4.
 
 1. [Getting started](guide/en/01_getting_started.md)
 2. [Creating and configuring a project](guide/en/02_project.md)
