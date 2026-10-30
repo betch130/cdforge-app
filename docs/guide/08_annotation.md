@@ -18,7 +18,7 @@ Chaque modification est enregistrée tuile par tuile au fil de l'édition : un a
 
 **Cible de l'édition** — la **couche** (sémantique ou changement, **L** pour basculer) et l'**époque**.
 
-**Classes** — la liste de la couche active ; **1** à **9** et **0** choisissent une classe, **A** l'applique à la sélection. **Chiffres 1–9, 0** règle ce que fait un chiffre : **Choisir, puis A** (par défaut) ou **Appliquer**, qui applique la classe dès le chiffre ; A applique dans les deux cas. Une classe ajoutée ou modifiée dans **Projet ▸ Classes du projet** apparaît dans la liste sans rouvrir l'annotateur.
+**Classes** — la liste de la couche active ; **1** à **9** et **0** choisissent une classe, **A** l'applique à la sélection. **Chiffres 1–9, 0** règle ce que fait un chiffre : **Choisir, puis A** (par défaut) ou **Appliquer**, qui applique la classe dès le chiffre ; A applique dans les deux cas.
 
 **Sur la sélection** — appliquer la classe (A), sélectionner toute la classe (S), élargir ou rétrécir (+ / −), propager à l'autre époque (T), changement de l'objet (K), valider auto → manuel (V), incertain (I), non étiqueté (U), écarter des points du jeu de données (Suppr) et les restaurer (Maj+Suppr), vider la sélection (Échap), annuler et rétablir.
 
