@@ -27,6 +27,10 @@ En ligne de commande, l'AppImage accepte toutes les commandes de `cdforge` :
 
 Vérifier le téléchargement : `sha256sum -c cdforge-*-x86_64.AppImage.sha256`
 
+## Guide de l'utilisateur
+
+Le [guide](docs/README.md), en français et en anglais, est aussi dans l'application : **F1**, ou le bouton **?** de chaque étape.
+
 ## Configuration requise
 
 - Linux x86_64 avec glibc 2.34 ou plus récente : Ubuntu 22.04+, Debian 12+, Fedora 35+, Linux Mint 21+…
@@ -60,6 +64,8 @@ Ouvrir une [issue](https://github.com/betch130/cdforge-app/issues) en indiquant 
 Data preparation for **urban 3D change detection** from multi-date LiDAR point cloud pairs: ingestion, registration, tiling, pre-labelling, annotation, splitting and export to Pointcept. This repository only holds the **built Linux releases**.
 
 **Install.** Download `cdforge-<version>-x86_64.AppImage` from the [releases](https://github.com/betch130/cdforge-app/releases/latest), make it executable once (`chmod +x cdforge-*-x86_64.AppImage`, or Properties ▸ “Allow executing file as program”), then double-click it. `install-launcher` adds it to the application menu. Any `cdforge` command works: `./cdforge-*-x86_64.AppImage --help`.
+
+**User guide.** The [guide](docs/README.md) (French and English) is also in the app: **F1**, or the **?** button on each stage.
 
 **Requirements.** Linux x86_64, glibc 2.34+ (Ubuntu 22.04+, Debian 12+, Fedora 35+), OpenGL. On Wayland it runs through XWayland. No libfuse2 needed. The interface is available in French and English.
 
