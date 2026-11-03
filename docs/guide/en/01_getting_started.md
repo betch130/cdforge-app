@@ -63,7 +63,15 @@ The **?** button, right of the title, opens this guide's chapter on the stage.
 
 **View** — dark or light theme; details panel (Ctrl+J); tasks panel (Ctrl+T); detach the tasks into a window; **Langue / Language**: the studio offers to restart in the chosen language, and reopens the same project.
 
-**Help** — User guide (F1), Interactive demos, the explanation documents (how pre-labelling decides on a change, SNAP semantic assistance, annotating both dates), AI module…, About.
+**Help** — User guide (F1), Interactive demos, the explanation documents (how pre-labelling decides on a change, SNAP semantic assistance, annotating both dates), AI module…, Check for updates…, Check for updates at startup, About (which gives the version).
+
+## Updates
+
+At startup, at most once a day, the studio checks whether a newer version is published; if so, a banner announces it at the top of the window. **Help ▸ Check for updates…** runs the same check on demand, and **Check for updates at startup** turns it off.
+
+With the AppImage, **Update…** shows what is new, then downloads the new AppImage **next to** the running one, under its own name (`cdforge-<version>-x86_64.AppImage`). It is made executable only once its checksum is verified: an interrupted or damaged download installs nothing. The menu launcher, if it pointed to the old one, now points to the new one. **Restart now** closes the studio, like Quit, and reopens the new version on the same project; the old one is deleted if the box is ticked. **Skip this version** stops offering it at startup.
+
+Installed another way (pip, repository), the studio announces the version and opens its page; update it the way it was installed.
 
 ## Key notions
 

@@ -63,7 +63,15 @@ Le bouton **?**, à droite du titre, ouvre le chapitre de ce guide consacré à 
 
 **Affichage** — thème sombre ou clair ; panneau de détails (Ctrl+J) ; panneau des tâches (Ctrl+T) ; détacher les tâches dans une fenêtre ; **Langue / Language** : le studio propose de redémarrer dans la langue choisie, et rouvre le même projet.
 
-**Aide** — Guide de l'utilisateur (F1), Démos interactives, les documents d'explication (comment le pré-label décide d'un changement, l'assistance sémantique SNAP, annoter les deux dates), Module IA…, À propos.
+**Aide** — Guide de l'utilisateur (F1), Démos interactives, les documents d'explication (comment le pré-label décide d'un changement, l'assistance sémantique SNAP, annoter les deux dates), Module IA…, Rechercher des mises à jour…, Rechercher les mises à jour au démarrage, À propos (qui donne la version).
+
+## Les mises à jour
+
+Au démarrage, au plus une fois par jour, le studio regarde si une version plus récente est publiée ; si oui, un bandeau l'annonce en haut de la fenêtre. **Aide ▸ Rechercher des mises à jour…** fait la même vérification à la demande, et **Rechercher les mises à jour au démarrage** la coupe.
+
+Avec l'AppImage, **Mettre à jour…** montre les nouveautés, puis télécharge la nouvelle AppImage **à côté** de celle qui tourne, sous son propre nom (`cdforge-<version>-x86_64.AppImage`). Elle n'est rendue exécutable qu'une fois sa somme de contrôle vérifiée : un téléchargement coupé ou abîmé n'installe rien. Le lanceur du menu, s'il désignait l'ancienne, désigne la nouvelle. **Relancer maintenant** ferme le studio, comme Quitter, et rouvre la nouvelle version sur le même projet ; l'ancienne est supprimée si la case est cochée. **Ignorer cette version** ne la propose plus au démarrage.
+
+Installé autrement (pip, dépôt), le studio annonce la version et ouvre sa page ; la mise à jour se fait comme l'installation.
 
 ## Les notions
 
