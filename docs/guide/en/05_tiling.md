@@ -35,7 +35,7 @@ Every point gets a stable id at ingestion. Labels set by hand follow it: changin
 
 ![The tile map](img/tile_map.png)
 
-The grid seen from above, one cell per tile, with a table beside it (tile, pair, status, split, change rate).
+The grid seen from above, one cell per tile, with a table beside it (tile, pair, status, split, change rate). It does not wait for pre-labelling: a pair's tiles appear as soon as its tiling ends, even when run from the command line.
 
 - **Colour by**: status (tiled, pre-labelled, in progress, validated, rejected), split, change rate (share of core points marked changed), uncertainty (1 − mean confidence) or number of points.
 - **Filters**: pair, status, split.

@@ -8,7 +8,7 @@ Le détail complet de la décision de changement, réglage par réglage, est dan
 
 Chaque époque est étiquetée à son tour contre l'autre, **avec exactement le même code** : les points de t0 sortent *unchanged*, *removed* ou *unobserved* ; ceux de t1, *unchanged*, *added* ou *unobserved*. Pour un point de l'époque A, face à l'autre époque B :
 
-1. **Mesurer** — B a-t-il au moins `min_pts` points en face, dans le rayon de recherche ?
+1. **Mesurer** — B a-t-il au moins `min_pts` points en face : dans le cylindre du point (M3C2), ou à portée de la mesure (C2C) ?
 2. Si oui, **la distance décide** : au-dessus du seuil, le point a changé (*added* ou *removed*) ; en dessous, il est *unchanged*.
 3. Si non, la question devient **« B regardait-il cet endroit ? »** — oui : l'objet a disparu (ou est apparu) ; non : *unobserved*, un angle mort où rien n'est décidable.
 4. **Nettoyage** — un amas de points changés plus petit que `min_cluster` est remis à *unchanged* : un vrai changement a une étendue.
@@ -19,7 +19,7 @@ Chaque époque est étiquetée à son tour contre l'autre, **avec exactement le 
 
 **M3C2** (par défaut) mesure l'écart le long de la normale locale, dans un cylindre, et calcule un **seuil de détection par point** (LoD95) à partir de la rugosité des deux nuages et de l'erreur de recalage. Sensible aux petits déplacements, il lui faut des normales fiables. La règle **même surface** ne garde, dans le cylindre d'un point plan, que les voisins orientés comme lui : le cylindre d'un point de sol n'attrape plus le mur voisin.
 
-**C2C** prend la distance au plus proche voisin : pas de normales, environ 2,7 fois plus rapide, robuste sur une géométrie bruitée ou éparse. Son seuil, en automatique, vaut 1,96 × l'erreur de recalage **plus l'espacement des points** — deux relevés d'une même surface ne tombent jamais pile l'un sur l'autre — donc les petits déplacements lui échappent. On peut aussi le **fixer à la main**.
+**C2C** prend la distance au plus proche voisin : pas de normales, environ 2,7 fois plus rapide, robuste sur une géométrie bruitée ou éparse. Son seuil, en automatique, vaut 1,96 × l'erreur de recalage **plus l'espacement des points** — deux relevés d'une même surface ne tombent jamais pile l'un sur l'autre — donc les petits déplacements lui échappent. On peut aussi le **fixer à la main**. La distance mesurée ne dépasse jamais la **portée de la mesure** — au-delà, rien n'est mesuré, et la couverture ou les rayons répondent : un seuil égal ou supérieur à la portée n'est donc jamais franchi, et le formulaire le signale.
 
 ### « B regardait-il cet endroit ? »
 
@@ -45,19 +45,22 @@ Quatre sous-onglets.
 
 **Changement**
 
-- *Mesure du changement* : la méthode, puis trois groupes — **pour les deux méthodes** (rayon de recherche, points minimum pour mesurer), **M3C2 seulement** (voisins pour l'orientation de la surface, profondeur de recherche, points au plus par cylindre, même surface : angle et planéité), **C2C seulement** (seuil de changement, auto ou fixé). Ce qui ne sert pas à la méthode choisie est grisé.
-- *Ce que l'autre époque observait* : les trois portions de la couverture, puis les rayons — quand en lancer, taille des voxels, points de vue essayés et leur écart, portée, ce qu'on ignore autour du capteur et autour du point, ce que les rayons ont le droit de changer.
-- *Nettoyage* : plus petit changement gardé, distance de regroupement.
-- *Incertitude du recalage* : la NMAD du recalage (auto) ou une valeur.
+- *Mesure du changement* : la méthode, avec ce qu'elle mesure, puis **seulement ses réglages** — le rayon du cylindre (M3C2) ou la portée de la mesure (C2C), et les points minimum pour mesurer ; pour M3C2, les voisins pour l'orientation de la surface, la profondeur de recherche, les points au plus par cylindre, et la même surface (angle et planéité) ; pour C2C, le seuil de changement, auto ou fixé. Sous le seuil, ce que vaut l'auto sur ce projet — estimé d'après le recalage et l'espacement des points, puis mesuré au dernier passage — et un avertissement quand le seuil atteint la portée de la mesure. Changer de méthode change les champs affichés ; les valeurs de l'autre méthode restent enregistrées.
 - *Exécution* : le moteur des voisinages (Rust s'il est installé) et le nombre de tuiles en parallèle — des choix de cette exécution, pas des réglages du projet.
+- *Réglages avancés*, repliés par défaut, et dépliés d'office si l'un d'eux s'écarte de sa valeur par défaut ; le bouton du pli dit combien le sont :
+  - *Ce que l'autre époque observait* : les trois portions de la couverture, puis les rayons — quand en lancer, taille des voxels, points de vue essayés et leur écart, portée, ce qu'on ignore autour du capteur et autour du point, ce que les rayons ont le droit de changer. En tête des rayons, les sources qui ont une trajectoire lisible ; sans aucune, les réglages des rayons sont grisés — une trajectoire se déclare par source, dans Ingestion ▸ Catalogue ;
+  - *Nettoyage* : plus petit changement gardé, distance de regroupement ;
+  - *Incertitude du recalage* : la NMAD du recalage (auto — la case dit ce qu'elle vaut sur ce projet) ou une valeur fixée.
 
-Sous chaque champ, ce qu'il fait. **Revenir aux valeurs par défaut** remet l'onglet à zéro sans rien écrire ; **Enregistrer les paramètres** écrit `project.yaml`.
+  Les réglages chiffrés des rayons et du nettoyage portent une case : **décochée**, le champ est grisé et c'est la valeur par défaut qui s'applique ; **cochée**, votre valeur est prise en compte. Décocher remet la valeur par défaut. Les cases de la couverture, elles, gardent leur sens : décochée, la portion ne compte plus.
 
-**Transfert sémantique** — l'activer, et le nombre de voisins du vote.
+Sous chaque champ, ce qu'il fait. **Revenir aux valeurs par défaut** remet l'onglet à zéro sans rien écrire ; **Enregistrer les paramètres** écrit `project.yaml`. Tant que le formulaire diffère du fichier, « Modifications non enregistrées » s'affiche à côté du bouton, et **Exécuter cette étape** les enregistre avant de lancer. Un enregistrement refusé — une valeur invalide — ne lance rien, et la raison s'affiche au même endroit.
 
-**Modèle sémantique** — le modèle géométrique (activer, voisinage, sol, seuils des objets) et le catalogue des modèles d'apprentissage profond (voir [Modèles sémantiques](07_ia.md)).
+**Transfert sémantique** — coupé par défaut : il recopie ce que porte l'autre époque, juste ou faux, sur tout ce qui n'a pas bougé. À rallumer quand une époque porte des labels humains. Le nombre de voisins du vote se grise tant qu'il est coupé.
 
-**Résultats** — ce qu'a produit le dernier pré-label : les labels de changement de t0 et t1, la part décidée par les rayons et par la couverture, et les points où le rayon a conclu autrement que la couverture.
+**Modèle sémantique** — le catalogue des modèles d'apprentissage profond (voir [Modèles sémantiques](07_ia.md)), puis le modèle géométrique : l'activer, et ses **seuils de décision**, repliés et rangés par règle — voisinage, sol, poteau, bâti, végétation, dans l'ordre où les règles s'appliquent. Chacun est expliqué sous son champ et porte une case, comme les réglages avancés ; **Réinitialiser les seuils** les remet aux valeurs par défaut, celles qui ont donné les chiffres annoncés.
+
+**Résultats** — ce qu'a produit le dernier pré-label : la mesure employée et, en C2C, le seuil appliqué (auto : médiane et étendue sur les tuiles ; ou fixé), les labels de changement de t0 et t1, la part décidée par les rayons et par la couverture, et les points où le rayon a conclu autrement que la couverture.
 
 ## L'onglet Contrôle qualité
 

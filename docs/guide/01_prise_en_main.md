@@ -61,7 +61,7 @@ Le bouton **?**, à droite du titre, ouvre le chapitre de ce guide consacré à 
 
 **Projet** — Exécuter tout le pipeline (l'équivalent de `cdforge run` : les étapes s'enchaînent, celles qui sont à jour sont sautées) ; Rafraîchir l'état (F5) ; Configuration du projet ; Classes du projet… ; Classes de changement….
 
-**Affichage** — thème sombre ou clair ; panneau de détails (Ctrl+J) ; panneau des tâches (Ctrl+T) ; détacher les tâches dans une fenêtre ; **Langue / Language** : le studio propose de redémarrer dans la langue choisie, et rouvre le même projet.
+**Affichage** — **Actualiser** (F5, ou **⟳ Actualiser** en haut à droite) relit le projet sur le disque après un travail fait ailleurs (ligne de commande, annotateur, project.yaml modifié à la main), sans toucher aux réglages en cours d'édition ; thème sombre ou clair ; panneau de détails (Ctrl+J), dont la hauteur se règle à la souris ; panneau des tâches (Ctrl+T) ; détacher les tâches ou les détails dans une fenêtre (aussi le bouton ⧉ du panneau de détails ; fermer sa fenêtre le rattache) ; **Langue / Language** : le studio propose de redémarrer dans la langue choisie, et rouvre le même projet.
 
 **Aide** — Guide de l'utilisateur (F1), Démos interactives, les documents d'explication (comment le pré-label décide d'un changement, l'assistance sémantique SNAP, annoter les deux dates), Module IA…, Rechercher des mises à jour…, Rechercher les mises à jour au démarrage, À propos (qui donne la version).
 

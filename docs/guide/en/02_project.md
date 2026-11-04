@@ -33,7 +33,12 @@ A source may have no labels at all: that is the common case, and pre-labels are 
 
 ### 4. Detection pairs
 
-Sources that share a site are paired automatically: the older as **t0**, the more recent as **t1**. **+ Add a pair manually** for the other cases. A purely semantic project may have no pair at all.
+Sources that share a site are paired automatically: the older as **t0**, the more recent as **t1**. **+ Add a pair manually** for the other cases, **Remove the selected pair** to drop one. A purely semantic project may have no pair at all.
+
+The **Create a pair** window (the same here, in Project ▸ Pairs and in Registration) shows each source's site, date and sensor. It proposes the most likely pair, which **⇅** swaps. The identifier, the name of the pair's folder, follows the sources until you change it; the note is free. Below the lists, it checks:
+
+- **blocking** — the same source twice, a pair that already exists, an identifier that is taken or is not a folder name;
+- **flagged** — t0 newer than t1 (additions and removals would be swapped), two sites, two sensors (a source of false changes), two coordinate systems, extents that overlap little or not at all. The extent comes from the LAS/LAZ headers; for another format it is not shown.
 
 ### 5. Summary
 
@@ -45,7 +50,7 @@ The **Project configuration** link in the header (or **Project ▸ Project confi
 
 - **General** — name, format version, CRS, folder; the description is edited here.
 - **Sources** — the list of sources; **Add a source** (same fields as in the wizard, with file paths separated by commas) and **Remove**.
-- **Pairs** — **Create a pair** (t0, t1) and **Remove the selected pair**.
+- **Pairs** — **Create a pair** and **Remove the selected pair…**. Removing takes the pair out of the project without touching the sources; its files stay on disk, and re-creating a pair with the same name finds them again. Two boxes delete them too: its computed results (registration, inference, export), and its tiles. The window counts the annotated or reviewed tiles, whose work would be lost, and refuses to delete tiles open in the annotator.
 - **Classes** — the project's semantic class list (below).
 - **Change classes** — their colours and descriptions (below).
 - **Parameters** — the settings of every stage, read-only: they are changed in each stage's **Configure** tab, or in the YAML tab.

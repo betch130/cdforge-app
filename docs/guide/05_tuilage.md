@@ -35,7 +35,7 @@ Chaque point reçoit à l'ingestion un identifiant stable. Les labels posés à 
 
 ![La carte des tuiles](img/tile_map.png)
 
-La grille vue de dessus, une case par tuile, et un tableau à côté (tuile, paire, statut, split, taux de changement).
+La grille vue de dessus, une case par tuile, et un tableau à côté (tuile, paire, statut, split, taux de changement). Elle n'attend pas le pré-label : les tuiles d'une paire y paraissent dès la fin de son tuilage, même lancé en ligne de commande.
 
 - **Colorier par** : statut (tuilé, pré-labellisé, en cours, validé, rejeté), split, taux de changement (part des points du cœur marqués changés), incertitude (1 − confiance moyenne) ou nombre de points.
 - **Filtres** : paire, statut, split.

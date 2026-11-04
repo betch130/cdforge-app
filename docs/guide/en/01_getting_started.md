@@ -61,7 +61,7 @@ The **?** button, right of the title, opens this guide's chapter on the stage.
 
 **Project** — Run the whole pipeline (the same as `cdforge run`: the stages follow one another, those already up to date are skipped); Refresh the state (F5); Project configuration; Project classes…; Change classes….
 
-**View** — dark or light theme; details panel (Ctrl+J); tasks panel (Ctrl+T); detach the tasks into a window; **Langue / Language**: the studio offers to restart in the chosen language, and reopens the same project.
+**View** — **Refresh** (F5, or **⟳ Refresh** at the top right) re-reads the project from disk after work done elsewhere (command line, annotator, project.yaml edited by hand), without touching the settings being edited; dark or light theme; details panel (Ctrl+J), whose height is set with the mouse; tasks panel (Ctrl+T); detach the tasks or the details into a window (also the panel's ⧉ button; closing its window puts it back); **Langue / Language**: the studio offers to restart in the chosen language, and reopens the same project.
 
 **Help** — User guide (F1), Interactive demos, the explanation documents (how pre-labelling decides on a change, SNAP semantic assistance, annotating both dates), AI module…, Check for updates…, Check for updates at startup, About (which gives the version).
 

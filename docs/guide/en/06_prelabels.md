@@ -8,7 +8,7 @@ The full detail of the change decision, setting by setting, is in **Help ▸ [Ho
 
 Each epoch is labelled in turn against the other, **with exactly the same code**: t0 points come out *unchanged*, *removed* or *unobserved*; t1 points, *unchanged*, *added* or *unobserved*. For a point of epoch A, facing the other epoch B:
 
-1. **Measure** — does B have at least `min_pts` points facing it, within the search radius?
+1. **Measure** — does B have at least `min_pts` points facing it: in the point's cylinder (M3C2), or within the measurement reach (C2C)?
 2. If so, **the distance decides**: above the threshold, the point has changed (*added* or *removed*); below it, it is *unchanged*.
 3. If not, the question becomes **"was B looking at this spot?"** — yes: the object disappeared (or appeared); no: *unobserved*, a blind spot where nothing can be decided.
 4. **Cleaning** — a cluster of changed points smaller than `min_cluster` is reset to *unchanged*: a real change has an extent.
@@ -19,7 +19,7 @@ Each epoch is labelled in turn against the other, **with exactly the same code**
 
 **M3C2** (default) measures the gap along the local normal, in a cylinder, and computes a **per-point detection threshold** (LoD95) from the roughness of both clouds and the registration error. Sensitive to small displacements, it needs reliable normals. The **same surface** rule keeps, in the cylinder of a planar point, only the neighbours oriented like it: a ground point's cylinder no longer catches the neighbouring wall.
 
-**C2C** takes the distance to the nearest neighbour: no normals, about 2.7 times faster, robust on noisy or sparse geometry. On auto, its threshold is 1.96 × the registration error **plus the point spacing** — two surveys of the same surface never land exactly on top of each other — so small displacements escape it. It can also be **set by hand**.
+**C2C** takes the distance to the nearest neighbour: no normals, about 2.7 times faster, robust on noisy or sparse geometry. On auto, its threshold is 1.96 × the registration error **plus the point spacing** — two surveys of the same surface never land exactly on top of each other — so small displacements escape it. It can also be **set by hand**. The measured distance never exceeds the **measurement reach** — beyond it, nothing is measured, and coverage or rays answer: a threshold equal to or above the reach is therefore never crossed, and the form flags it.
 
 ### "Was B looking at this spot?"
 
@@ -45,19 +45,22 @@ Four sub-tabs.
 
 **Change**
 
-- *Change measurement*: the method, then three groups — **for both methods** (search radius, minimum points to measure), **M3C2 only** (neighbours for the surface orientation, search depth, maximum points per cylinder, same surface: angle and planarity), **C2C only** (change threshold, auto or set). What does not apply to the chosen method is greyed out.
-- *What the other epoch observed*: the three parts of coverage, then rays — when to cast them, voxel size, viewpoints tried and their spacing, range, what to ignore around the sensor and around the point, what rays are allowed to change.
-- *Cleaning*: smallest change kept, clustering distance.
-- *Registration uncertainty*: the registration NMAD (auto) or a value.
+- *Change measurement*: the method, with what it measures, then **only its settings** — the cylinder radius (M3C2) or the measurement reach (C2C), and the minimum points to measure; for M3C2, the neighbours for the surface orientation, the search depth, the maximum points per cylinder, and the same surface (angle and planarity); for C2C, the change threshold, auto or set. Under the threshold, what auto is worth on this project — estimated from the registration and the point spacing, then measured on the last run — and a warning when the threshold reaches the measurement reach. Switching methods switches the fields shown; the other method's values stay saved.
 - *Execution*: the neighbourhood engine (Rust when installed) and the number of tiles in parallel — choices for this run, not project settings.
+- *Advanced settings*, folded by default, and unfolded on their own when one of them differs from its default; the fold's button says how many do:
+  - *What the other epoch observed*: the three parts of coverage, then rays — when to cast them, voxel size, viewpoints tried and their spacing, range, what to ignore around the sensor and around the point, what rays are allowed to change. At the top of the rays, the sources that have a readable trajectory; with none, the ray settings are greyed out — a trajectory is declared per source, in Ingestion ▸ Catalogue;
+  - *Cleaning*: smallest change kept, clustering distance;
+  - *Registration uncertainty*: the registration NMAD (auto — the box says what it is worth on this project) or a fixed value.
 
-Under each field, what it does. **Restore defaults** resets the tab without writing anything; **Save parameters** writes `project.yaml`.
+  The numeric settings for rays and cleaning have a box: **unchecked**, the field is greyed out and the default value applies; **checked**, your value is used. Unchecking restores the default. The coverage boxes keep their meaning: unchecked, that part no longer counts.
 
-**Semantic transfer** — switch it on, and the number of neighbours in the vote.
+Under each field, what it does. **Restore defaults** resets the tab without writing anything; **Save parameters** writes `project.yaml`. While the form differs from the file, “Unsaved changes” shows next to the button, and **Run this step** saves them before running. A refused save — an invalid value — runs nothing, and the reason shows in the same place.
 
-**Semantic model** — the geometric model (enable, neighbourhood, ground, object thresholds) and the catalogue of deep-learning models (see [Semantic models](07_ai.md)).
+**Semantic transfer** — off by default: it copies what the other epoch carries, right or wrong, onto everything that did not move. Switch it back on when an epoch carries human labels. The number of neighbours in the vote is greyed out while it is off.
 
-**Results** — what the last pre-labelling produced: the change labels of t0 and t1, the share decided by rays and by coverage, and the points where the ray concluded otherwise than coverage.
+**Semantic model** — the catalogue of deep-learning models (see [Semantic models](07_ai.md)), then the geometric model: switch it on, and its **decision thresholds**, folded and grouped by rule — neighbourhood, ground, pole, building, vegetation, in the order the rules apply. Each one is explained under its field and has a box, like the advanced settings; **Reset the thresholds** puts back the defaults, the ones behind the figures quoted.
+
+**Results** — what the last pre-labelling produced: the measurement used and, for C2C, the threshold applied (auto: median and range over the tiles; or set), the change labels of t0 and t1, the share decided by rays and by coverage, and the points where the ray concluded otherwise than coverage.
 
 ## The Quality control tab
 

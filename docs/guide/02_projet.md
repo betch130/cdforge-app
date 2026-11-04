@@ -33,7 +33,12 @@ Une source peut n'avoir aucun label : c'est le cas général, et les pré-labels
 
 ### 4. Paires de détection
 
-Les sources qui partagent un site sont appariées d'office : la plus ancienne en **t0**, la plus récente en **t1**. **+ Ajouter une paire manuellement** pour les autres cas. Un projet purement sémantique peut n'avoir aucune paire.
+Les sources qui partagent un site sont appariées d'office : la plus ancienne en **t0**, la plus récente en **t1**. **+ Ajouter une paire manuellement** pour les autres cas, **Retirer la paire sélectionnée** pour en écarter une. Un projet purement sémantique peut n'avoir aucune paire.
+
+La fenêtre **Créer une paire** (la même ici, dans Projet ▸ Paires et dans le Recalage) montre le site, la date et le capteur de chaque source. Elle propose la paire la plus probable, que **⇅** inverse. L'identifiant, nom du dossier de la paire, suit les sources tant qu'on ne le change pas ; la note est libre. Sous les listes, elle vérifie :
+
+- **bloquant** — deux fois la même source, une paire qui existe déjà, un identifiant pris ou qui n'est pas un nom de dossier ;
+- **signalé** — t0 plus récente que t1 (ajouts et retraits seraient échangés), deux sites, deux capteurs (source de faux changements), deux systèmes de coordonnées, des emprises qui se recouvrent peu ou pas. L'emprise vient des en-têtes LAS/LAZ ; pour un autre format, elle n'est pas affichée.
 
 ### 5. Récapitulatif
 
@@ -45,7 +50,7 @@ Le lien **Configuration du projet** de l'en-tête (ou **Projet ▸ Configuration
 
 - **Général** — nom, version du format, CRS, dossier ; la description se modifie ici.
 - **Sources** — la liste des sources ; **Ajouter une source** (mêmes champs que dans l'assistant, avec des chemins de fichiers séparés par des virgules) et **Retirer**.
-- **Paires** — **Créer une paire** (t0, t1) et **Retirer la paire sélectionnée**.
+- **Paires** — **Créer une paire** et **Retirer la paire sélectionnée…**. Retirer enlève la paire du projet, sans toucher aux sources ; ses fichiers restent sur le disque, et recréer une paire du même nom les retrouve. Deux cases les effacent aussi : ses résultats calculés (recalage, inférence, export), et ses tuiles. La fenêtre compte les tuiles annotées ou relues, dont le travail serait perdu, et refuse d'effacer des tuiles ouvertes dans l'annotateur.
 - **Classes** — la liste de classes sémantiques du projet (ci-dessous).
 - **Classes de changement** — leurs couleurs et descriptions (ci-dessous).
 - **Paramètres** — les réglages de chaque étape, en lecture seule : ils se modifient dans l'onglet **Configurer** de chaque étape, ou dans l'onglet YAML.

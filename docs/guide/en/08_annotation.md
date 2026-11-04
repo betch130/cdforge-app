@@ -14,7 +14,7 @@ Every change is saved tile by tile as you edit: a crash only loses the gesture i
 
 ## Label
 
-**Selection tool** — polygon (Ctrl+1), lasso (Ctrl+2), brush (Ctrl+3), connected object (Ctrl+4), same class (Ctrl+5), none — move the view (Ctrl+6). The **mode** says what a gesture does: **Replace**, **Add** to or **Remove** from the selection; **E** toggles removal and back.
+**Selection tool** — polygon (Ctrl+1), lasso (Ctrl+2), brush (Ctrl+3), connected object (Ctrl+4), same class (Ctrl+5), none — move the view (Ctrl+6). The **mode**, in the bar above the views, says what a gesture does: **Replace**, **Add** to or **Remove** from the selection; **E** toggles removal and back.
 
 **Edit target** — the **layer** (semantic or change, **L** to switch) and the **epoch**.
 

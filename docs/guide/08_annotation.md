@@ -14,7 +14,7 @@ Chaque modification est enregistrée tuile par tuile au fil de l'édition : un a
 
 ## Étiqueter
 
-**Outil de sélection** — polygone (Ctrl+1), lasso (Ctrl+2), pinceau (Ctrl+3), objet connexe (Ctrl+4), même classe (Ctrl+5), aucun — déplacer la vue (Ctrl+6). Le **mode** dit ce que fait un geste : **Remplacer**, **Ajouter** ou **Retirer** la sélection ; **E** bascule en retrait et revient.
+**Outil de sélection** — polygone (Ctrl+1), lasso (Ctrl+2), pinceau (Ctrl+3), objet connexe (Ctrl+4), même classe (Ctrl+5), aucun — déplacer la vue (Ctrl+6). Le **mode**, dans la barre au-dessus des vues, dit ce que fait un geste : **Remplacer**, **Ajouter** ou **Retirer** la sélection ; **E** bascule en retrait et revient.
 
 **Cible de l'édition** — la **couche** (sémantique ou changement, **L** pour basculer) et l'**époque**.
 

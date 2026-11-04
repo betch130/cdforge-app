@@ -26,7 +26,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | colorama | 0.4.6 | BSD License |
 | contourpy | 1.4.0 | BSD-3-Clause |
 | cycler | 0.12.1 | BSD License |
-| cyclopts | 5.3.2 | Apache-2.0 |
+| cyclopts | 5.3.3 | Apache-2.0 |
 | docstring_parser | 0.18.0 | MIT License |
 | fonttools | 4.68.0 | MIT |
 | idna | 3.20 | BSD-3-Clause |
@@ -40,20 +40,22 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | packaging | 26.3 | Apache-2.0 OR BSD-2-Clause |
 | pillow | 13.0.0 | MIT-CMU |
 | pip | 26.2.2 | MIT |
-| platformdirs | 4.13.7 | MIT |
+| platformdirs | 4.14.3 | MIT |
 | pooch | 1.9.0 | BSD-3-Clause |
 | psutil | 7.2.2 | BSD-3-Clause |
-| pydantic | 2.14.1 | MIT |
-| pydantic_core | 2.50.1 | MIT |
+| pydantic | 2.14.2 | MIT |
+| pydantic_core | 2.50.2 | MIT |
+| pye57 | 0.4.19 | MIT License |
 | Pygments | 2.21.0 | BSD-2-Clause |
 | pyparsing | 3.3.3 | MIT |
 | pyproj | 3.8.0 | MIT |
 | pyqtgraph | 0.14.0 | MIT |
+| pyquaternion | 0.9.9 | MIT License |
 | PySide6_Essentials | 6.12.0 | LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only |
-| python-dateutil | 3.0.0 | BSD License, Apache Software License |
-| pyvista | 0.49.1 | MIT |
+| python-dateutil | 4.0.0 | BSD-3-Clause |
+| pyvista | 0.49.2 | MIT |
 | pyvista-validation | 0.2.2 | MIT |
-| pyvistaqt | 0.13.1 | MIT License |
+| pyvistaqt | 0.13.2 | MIT License |
 | PyYAML | 6.0.3 | MIT License |
 | QtPy | 2.4.3 | MIT License |
 | requests | 2.34.2 | Apache Software License |
@@ -63,7 +65,6 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | scooby | 0.12.1 | MIT |
 | shellingham | 1.5.4 | ISC License (ISCL) |
 | shiboken6 | 6.12.0 | LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only |
-| six | 1.17.0 | MIT License |
 | threadpoolctl | 3.7.0 | BSD-3-Clause |
 | typer | 0.27.3 | MIT |
 | typing-inspection | 0.4.4 | MIT |
