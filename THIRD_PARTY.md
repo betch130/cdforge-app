@@ -85,7 +85,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | alembic | 1.20.1 | MIT |
 | annotated-doc | 0.0.5 | MIT |
 | annotated-types | 0.8.0 | MIT |
-| anyio | 4.15.1 | MIT |
+| anyio | 4.16.0 | MIT |
 | attrs | 26.1.0 | MIT |
 | ccimport | 0.4.4 | MIT License |
 | certifi | 2026.10.23 | Mozilla Public License 2.0 (MPL 2.0) |
@@ -100,17 +100,17 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | cycler | 0.12.1 | BSD License |
 | distro | 1.9.0 | Apache Software License |
 | einops | 0.8.2 | MIT License |
-| filelock | 3.32.3 | MIT |
+| filelock | 4.2.4 | MIT |
 | fire | 0.7.1 | Apache-2.0 |
 | flash_attn | 2.8.3 | BSD License |
 | fonttools | 4.68.0 | MIT |
 | frozenlist | 1.8.0 | Apache-2.0 |
-| fsspec | 2026.7.0 | BSD-3-Clause |
+| fsspec | 2026.9.0 | BSD-3-Clause |
 | ftfy | 6.3.1 | Apache-2.0 |
 | gmpy2 | 2.3.2 | LGPL-3.0-or-later |
 | googleapis-common-protos | 1.76.0 | Apache-2.0 |
 | h11 | 0.16.0 | MIT License |
-| hf-xet | 1.7.0 | Apache-2.0 |
+| hf-xet | 1.8.0 | Apache-2.0 |
 | httpcore | 1.0.9 | BSD-3-Clause |
 | httpcore2 | 2.16.0 | BSD-3-Clause |
 | httpx | 0.28.1 | BSD License |
@@ -120,6 +120,8 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | Jinja2 | 3.1.6 | BSD License |
 | kiwisolver | 1.5.1 | BSD License |
 | lark | 1.3.1 | MIT License |
+| laspy | 2.7.0 | BSD-2-Clause |
+| lazrs | 0.8.2 | MIT |
 | llvmlite | 0.50.0 | BSD-2-Clause AND Apache-2.0 WITH LLVM-exception |
 | Mako | 1.4.3 | MIT |
 | markdown-it-py | 4.2.0 | MIT License |
@@ -147,14 +149,14 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | nvidia-nvjitlink-cu12 | 12.8.61 | Other/Proprietary License |
 | nvidia-nvtx-cu12 | 12.8.55 | Other/Proprietary License |
 | ocnn | 2.3.3 | MIT |
-| opentelemetry-api | 1.45.1 | Apache-2.0 |
-| opentelemetry-exporter-http-transport | 0.66b1 | Apache-2.0 |
-| opentelemetry-exporter-otlp-common | 0.66b1 | Apache-2.0 |
-| opentelemetry-exporter-otlp-proto-common | 1.45.1 | Apache-2.0 |
-| opentelemetry-exporter-otlp-proto-http | 1.45.1 | Apache-2.0 |
-| opentelemetry-proto | 1.45.1 | Apache-2.0 |
-| opentelemetry-sdk | 1.45.1 | Apache-2.0 |
-| opentelemetry-semantic-conventions | 0.66b1 | Apache-2.0 |
+| opentelemetry-api | 1.45.2 | Apache-2.0 |
+| opentelemetry-exporter-http-transport | 0.66b2 | Apache-2.0 |
+| opentelemetry-exporter-otlp-common | 0.66b2 | Apache-2.0 |
+| opentelemetry-exporter-otlp-proto-common | 1.45.2 | Apache-2.0 |
+| opentelemetry-exporter-otlp-proto-http | 1.45.2 | Apache-2.0 |
+| opentelemetry-proto | 1.45.2 | Apache-2.0 |
+| opentelemetry-sdk | 1.45.2 | Apache-2.0 |
+| opentelemetry-semantic-conventions | 0.66b2 | Apache-2.0 |
 | optuna | 5.0.0 | MIT License |
 | packaging | 26.3 | Apache-2.0 OR BSD-2-Clause |
 | pandas | 3.1.0 | BSD-3-Clause |
@@ -162,7 +164,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | peft | 0.21.2 | Apache Software License |
 | pillow | 12.3.0 | MIT-CMU |
 | pip | 26.2.2 | MIT |
-| platformdirs | 4.13.6 | MIT |
+| platformdirs | 4.14.3 | MIT |
 | pointgroup_ops (Pointcept) | 0.0.0 | MIT |
 | pointops (Pointcept) | 1.0 | MIT |
 | portalocker | 4.4.1 | BSD-3-Clause |
@@ -170,11 +172,11 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | protobuf | 7.36.2 | 3-Clause BSD License |
 | psutil | 7.2.2 | BSD-3-Clause |
 | pybind11 | 3.1.0 | BSD-3-Clause |
-| pydantic | 2.14.1 | MIT |
-| pydantic_core | 2.50.1 | MIT |
+| pydantic | 2.14.2 | MIT |
+| pydantic_core | 2.50.2 | MIT |
 | Pygments | 2.21.0 | BSD-2-Clause |
 | pyparsing | 3.3.3 | MIT |
-| python-dateutil | 3.0.0 | BSD License, Apache Software License |
+| python-dateutil | 4.0.0 | BSD-3-Clause |
 | PyYAML | 6.0.3 | MIT License |
 | regex | 2026.9.29 | Apache-2.0 AND CNRI-Python |
 | requests | 2.34.2 | Apache Software License |
@@ -183,10 +185,9 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | scipy | 1.18.1 | BSD License |
 | setuptools | 78.1.0 | MIT License |
 | shellingham | 1.5.4 | ISC License (ISCL) |
-| six | 1.17.0 | MIT License |
 | sniffio | 1.3.1 | MIT License, Apache Software License |
 | spconv-cu126 | 2.3.8 | Apache Software License |
-| SQLAlchemy | 2.1.6 | MIT |
+| SQLAlchemy | 2.1.8 | MIT |
 | sympy | 1.14.0 | BSD License |
 | termcolor | 3.3.0 | MIT |
 | timm | 1.0.30 | Apache Software License |
@@ -204,7 +205,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | typer | 0.27.3 | MIT |
 | typing-inspection | 0.4.4 | MIT |
 | typing_extensions | 4.16.0 | PSF-2.0 |
-| tzdata | 2026.5 | Apache-2.0 |
+| tzdata | 2026.6 | Apache-2.0 |
 | urllib3 | 2.8.0 | MIT |
 | wandb | 0.31.0 | MIT License |
 | wcwidth | 0.9.4 | MIT License |
