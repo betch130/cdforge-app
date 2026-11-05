@@ -56,7 +56,7 @@ Eight models, for three domains — outdoor, indoor (with colour), aerial. The d
 - **Sensor and rays** — the sensor trajectory, and the rays replayed by **R**.
 - **Points** — size (Ctrl++ / Ctrl+−), detail, reset the camera.
 
-The **section** is drawn with **C** in the plan; **,** and **.** shift it by one width.
+The **section** is drawn with **C**, then a drag in the plan; **,** and **.** shift it by one width. The section view does not exist before that: it opens beside the plan on the first drawing, then follows from one tile to the next, at the same place in the tile.
 
 ## Review
 
@@ -75,6 +75,16 @@ A tile goes through the statuses *tiled → pre-labelled → in progress → don
 ## Understanding a label: the R key
 
 On a point of the 3D view, **R** replays the change decision: the measurement, the threshold, coverage, the sensor rays drawn in 3D and in the plan, and the step that decided.
+
+## What a point holds: Ctrl+I
+
+**Ctrl+I** opens the **Point under the cursor** panel. It follows the mouse in the 3D view, the plan or the section, and shows what the tile holds for the point aimed at:
+- the epoch, the X, Y, Z coordinates, and whether the point is in the core or the buffer;
+- its semantic class and its change class, each with its source (pre-label, manual, ground truth), its confidence, and whether it is flagged for review;
+- the distance to the other epoch, the level of detection, whether the difference is significant, and what the rays said;
+- every other attribute of the survey: intensity, colour, flight line number, GPS time…
+
+The point aimed at is circled. Ctrl+I closes the panel.
 
 ## Shortcuts
 
@@ -103,6 +113,7 @@ On a point of the 3D view, **R** replays the change decision: the measurement, t
 | , / . | shift the section |
 | P | region growing |
 | R | explain the change decision |
+| Ctrl+I | information on the point under the cursor |
 | G, Shift+G, Alt+G, Ctrl+G | SNAP assistance |
 | [ / ] | SNAP threshold |
 | Ctrl+Shift+G | ground by cloth simulation |

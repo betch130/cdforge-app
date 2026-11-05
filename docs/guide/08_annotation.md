@@ -56,7 +56,7 @@ Huit modèles, pour trois domaines — extérieur, intérieur (avec la couleur),
 - **Capteur et rayons** — la trajectoire du capteur, et les rayons rejoués par **R**.
 - **Points** — taille (Ctrl++ / Ctrl+−), détail, réinitialiser la caméra.
 
-La **coupe** se trace avec **C** dans le plan ; **,** et **.** la décalent d'une largeur.
+La **coupe** se trace avec **C**, puis en glissant dans le plan ; **,** et **.** la décalent d'une largeur. La vue de coupe n'existe pas avant : elle s'ouvre à côté du plan au premier tracé, puis suit d'une tuile à l'autre, à la même place dans la tuile.
 
 ## Révision
 
@@ -75,6 +75,16 @@ Une tuile passe par les statuts *tuilée → pré-labellisée → en cours → t
 ## Comprendre un label : la touche R
 
 Sur un point de la vue 3D, **R** rejoue la décision de changement : la mesure, le seuil, la couverture, les rayons du capteur dessinés dans la 3D et le plan, et l'étape qui a tranché.
+
+## Ce que sait un point : Ctrl+I
+
+**Ctrl+I** ouvre le panneau **Point sous le curseur**. Il suit la souris dans la 3D, le plan ou la coupe, et dit ce que la tuile sait du point visé :
+- l'époque, les coordonnées X, Y, Z, et si le point est dans le cœur ou le tampon ;
+- sa classe sémantique et sa classe de changement, chacune avec sa source (pré-label, manuel, vérité terrain), sa confiance, et s'il est à revoir ;
+- la distance à l'autre époque, le seuil de détection, si l'écart est significatif, et ce qu'en ont dit les rayons ;
+- tous les autres attributs du relevé : intensité, couleur, numéro de bande, temps GPS…
+
+Le point visé est cerclé. Ctrl+I referme le panneau.
 
 ## Les raccourcis
 
@@ -103,6 +113,7 @@ Sur un point de la vue 3D, **R** rejoue la décision de changement : la mesure, 
 | , / . | décaler la coupe |
 | P | croissance de région |
 | R | expliquer la décision de changement |
+| Ctrl+I | informations du point sous le curseur |
 | G, Maj+G, Alt+G, Ctrl+G | assistance SNAP |
 | [ / ] | seuil SNAP |
 | Ctrl+Maj+G | sol par simulation de tissu |
