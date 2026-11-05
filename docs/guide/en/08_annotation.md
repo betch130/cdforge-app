@@ -18,7 +18,9 @@ Every change is saved tile by tile as you edit: a crash only loses the gesture i
 
 **Edit target** — the **layer** (semantic or change, **L** to switch) and the **epoch**.
 
-**Classes** — the list for the active layer; **1** to **9** and **0** pick a class, **A** applies it to the selection. **Digits 1–9, 0** sets what a digit does: **Pick, then A** (the default) or **Apply**, which applies the class as soon as you type the digit; A applies in both cases. A class added or changed in **Project ▸ Project classes** shows up in the list without reopening the annotator.
+**Classes** — the list for the active layer; each class shows its key in brackets, **A** applies the chosen class to the selection. **Class key** sets what the key does: **Pick, then A** (the default) or **Apply**, which applies the class as soon as you press the key; A applies in both cases.
+
+Keys are set per project. **Right-click** a class ▸ **Choose a key…**: a digit, Alt+digit, a free letter or a function key, saved in `annotation_keys.yaml` at the project root; a key the window already uses (A, S, G…) is refused. The other classes get a key from the app, **1** to **0** then **Alt+1** to **Alt+0**: first the classes most often set by hand in the project, then, on a tie, base classes before their sub-classes. On a new project the ten base classes therefore have the ten digits. A class keeps its key as long as it stays among the first, and keys do not move while you annotate: the distribution is redone when the annotator opens. **Class keys…** (same menu) shows them all, with the number of uses. The filter does not change the keys; **Enter** in it takes the first class found. A class added or changed in **Project ▸ Project classes** shows up in the list without reopening the annotator.
 
 **On the selection** — apply the class (A), select the whole class (S), grow or shrink (+ / −), propagate to the other epoch (T), object change (K), validate auto → manual (V), uncertain (I), unlabelled (U), set points aside from the dataset (Del) and restore them (Shift+Del), clear the selection (Esc), undo and redo.
 
