@@ -8,7 +8,7 @@ Without registration, a wall that has not moved appears shifted by a few centime
 
 A robust, multi-scale ICP (*iterative closest point*):
 
-1. both epochs are read in full and thinned on a voxel grid — the longest phase on a large survey;
+1. **voxel subsampling**: both epochs are read in full and space is cut into cubes (voxels) of the finest `voxel_scales`; in each cube, only the first point that falls in it is kept — a real measured point, neither the cube centre nor an average. It is the longest phase on a large survey; it only serves the computation, the files and tiles keep all their points;
 2. ICP runs first at the coarsest scale, then refines: at every scale (`voxel_scales`, by default 1, 0.5, 0.25 m), a correspondence is only kept below a maximum distance (`max_corr`, 3, 1.5, 0.75 m);
 3. a robust weighting (Tukey by default, or Huber) sets aside what really changed, which must not pull the transform.
 
@@ -40,9 +40,10 @@ At the end, the **NMAD of the residuals** (a robust measure of their spread) is 
 
 ## Reading the result
 
-The **State** tab and the **Registration results** give the rotation (in degrees), the translation, the NMAD of the residuals, the inlier fraction and the **condition number** — global values for the pair.
+The **State** tab and the **Registration results** give the rotation (in degrees), the translation, the NMAD of the residuals, both **RMSE**, the inlier fraction and the **condition number** — global values for the pair.
 
 - An NMAD of a few centimetres, on a mobile survey, is the expected order; it tells the error left where nothing changed.
+- The **point-to-point RMSE** (distance from each t1 point to its nearest neighbour in t0) and the **point-to-plane RMSE** (that distance projected on the normal of the t0 surface) are given **before → after** registration, at the finest scale and over the matches closer than the last `max_corr`, whatever the chosen method. Point-to-plane measures the gap to the surface; point-to-point adds the point spacing and the sliding along surfaces, so it is always at least as large. Without robust weighting, both count what changed: use them to compare registrations with each other; the NMAD remains the error that enters pre-labelling.
 - A very high condition number means one direction is poorly constrained: a long street without façades, flat terrain. Stable classes or a given initialisation help.
 - A rotation of several degrees between two georeferenced surveys points to an error (CRS, wrong pair) rather than a real offset.
 

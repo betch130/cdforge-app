@@ -25,8 +25,8 @@ For each source:
 - **ID** — unique in the project;
 - **Sensor** — MLS, ALS, ULS, TLS, SYN (synthetic) or other;
 - **Site** and **Epoch** (for instance `2023-06`) — two sources of the same site make a pair;
-- **Semantic scheme** — how to read the classes the file carries (`asprs_las14`, `toronto3d`, `semantickitti19`…); empty if the file has no classes;
-- **Change scheme** — for a file that already carries change labels (`urb3dcd_v2`); empty otherwise;
+- **Class mapping** — how to read the classes the file carries (`asprs_las14`, `toronto3d`, `semantickitti19`…); empty if the file has no classes;
+- **Change mapping** — for a file that already carries change labels (`urb3dcd_v2`); empty otherwise;
 - **Trajectory** — optional: the CSV file of the sensor positions. It lets pre-labelling cast rays from the sensor to the points (see [Pre-labelling](06_prelabels.md)).
 
 A source may have no labels at all: that is the common case, and pre-labels are there for it. If the files added do not carry the same CRS, or not the one declared on the previous page, the wizard shows it: nothing downstream would catch it.
@@ -65,7 +65,7 @@ The **Project configuration** link in the header (or **Project ▸ Project confi
 Every project starts from **10 base classes**: ground, building, vegetation, vehicle, person, pole_utility, street_furniture, barrier, water, other. Names are in English, and the name is what is shown. The wizard and `cdforge init` write them to `taxonomy.yaml` at the project root; a project that still points to a list shipped with cdforge gets a copy at the first change — the package's list is never modified.
 
 - **Add…** — a finer class **under a base class** (`street_light` under `pole_utility`: the base-class export counts it in its group), or a **new base class** (`rail`); you then say whether what it designates is **permanent** or **transient**.
-- **Rename…** — the old name is still understood: scheme translations that cite it still point to this class.
+- **Rename…** — the old name is still understood: mappings that cite it still point to this class.
 - **Colour…**
 - **Permanent / transient** — applies to the whole group. In the annotator, a change carried by a transient class (a car parked at t0, gone at t1) can be requalified as *transient*.
 - **Merge into…** — remaps one class onto another across the project: every point that carries it, in every layer of every tile, moves to the other; then it leaves the list.
@@ -86,7 +86,7 @@ Five classes, with fixed ids: *unchanged* (0), *added* (1), *removed* (2), *tran
 
 ```bash
 cdforge init my_project       # commented project.yaml and folders
-cdforge validate my_project   # checks project.yaml, the source files and the schemes
+cdforge validate my_project   # checks project.yaml, the source files and the mappings
 ```
 
 Next step: [Ingestion](03_ingestion.md).

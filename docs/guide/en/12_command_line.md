@@ -9,7 +9,7 @@ The project folder (the one holding `project.yaml`) is the last argument, and de
 | Command | What it does | Useful options |
 |---|---|---|
 | `cdforge init FOLDER` | creates a project: commented `project.yaml`, folders, 10 base classes | |
-| `cdforge validate` | checks `project.yaml`, the source files and the label schemes | |
+| `cdforge validate` | checks `project.yaml`, the source files and the class mappings | |
 | `cdforge ingest` | reads, crops, harmonises labels, writes `work/ingested/*.laz` | `--source`, `--overwrite` |
 | `cdforge align` | registers t1 onto t0 | `--pair`, `--overwrite`, `--implementation` |
 | `cdforge tile` | cuts each pair into tiles | `--pair`, `--size`, `--overlap`, `--min-points`, `--workers`, `--overwrite` |
@@ -30,7 +30,7 @@ The project folder (the one holding `project.yaml`) is the last argument, and de
 | `cdforge models` | the catalogue; `--model NAME` for one model in detail |
 | `cdforge fetch-weights MODEL` | downloads the weights and checks their fingerprint |
 | `cdforge stage-inference MODEL` | prepares the tiles for the model and prints the inference command (`--python`: the interpreter where torch is installed) |
-| `cdforge import-predictions FOLDER` | imports `<tile>/<epoch>_semantic.npy` predictions as pre-labels (`--scheme`, `--min-conf`, `--keep-low-conf`, `--reset-auto`) |
+| `cdforge import-predictions FOLDER` | imports `<tile>/<epoch>_semantic.npy` predictions as pre-labels (`--scheme`, required for a catalogue model, `--min-conf`, `--keep-low-conf`, `--reset-auto`) |
 
 ## Annotation
 

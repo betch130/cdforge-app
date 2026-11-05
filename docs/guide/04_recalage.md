@@ -8,7 +8,7 @@ Sans recalage, un mur qui n'a pas bougé apparaît décalé de quelques centimè
 
 Une ICP (*iterative closest point*) robuste, à plusieurs échelles :
 
-1. les deux époques sont lues en entier et amincies sur une grille de voxels — c'est la phase la plus longue sur un gros relevé ;
+1. **sous-échantillonnage par voxels** : les deux époques sont lues en entier et l'espace est découpé en cubes (voxels) de la plus fine des `voxel_scales` ; dans chaque cube, on ne garde que le premier point qui y tombe — un vrai point mesuré, ni le centre du cube ni une moyenne. C'est la phase la plus longue sur un gros relevé ; elle ne sert qu'au calcul, les fichiers et les tuiles gardent tous leurs points ;
 2. l'ICP tourne d'abord à l'échelle la plus grossière, puis affine : à chaque échelle (`voxel_scales`, par défaut 1 ; 0,5 ; 0,25 m), une correspondance n'est retenue qu'en deçà d'une distance maximale (`max_corr`, 3 ; 1,5 ; 0,75 m) ;
 3. une pondération robuste (Tukey par défaut, ou Huber) écarte ce qui a vraiment changé, qui ne doit pas tirer la transformation.
 
@@ -40,9 +40,10 @@ Une ICP (*iterative closest point*) robuste, à plusieurs échelles :
 
 ## Lire le résultat
 
-L'onglet **État** et les **Résultats du recalage** donnent la rotation (en degrés), la translation, la NMAD des résidus, la fraction d'inliers et le **conditionnement** — ce sont des valeurs globales pour la paire.
+L'onglet **État** et les **Résultats du recalage** donnent la rotation (en degrés), la translation, la NMAD des résidus, les deux **RMSE**, la fraction d'inliers et le **conditionnement** — ce sont des valeurs globales pour la paire.
 
 - Une NMAD de quelques centimètres, sur un relevé mobile, est l'ordre attendu ; elle dit l'erreur qui reste là où rien n'a changé.
+- La **RMSE point à point** (distance de chaque point de t1 à son plus proche voisin dans t0) et la **RMSE point à plan** (cette distance projetée sur la normale de la surface de t0) sont données **avant → après** le recalage, à l'échelle la plus fine et sur les appariements à moins de la dernière `max_corr`, quelle que soit la méthode choisie. Le point à plan mesure l'écart à la surface ; le point à point y ajoute l'espacement des points et le glissement le long des surfaces, il est donc toujours au moins aussi grand. Sans pondération robuste, les deux comptent ce qui a changé : elles servent à comparer des recalages entre eux, la NMAD reste l'erreur qui entre dans le pré-label.
 - Un conditionnement très élevé veut dire qu'une direction est mal contrainte : une rue en long sans façades, un terrain plat. Les classes stables ou une initialisation donnée aident.
 - Une rotation de plusieurs degrés sur deux relevés géoréférencés signale plutôt une erreur (CRS, mauvaise paire) qu'un vrai décalage.
 

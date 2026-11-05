@@ -1,6 +1,6 @@
 # Ingestion
 
-L'ingestion lit chaque source, la rogne à la zone d'intérêt, uniformise ses labels selon son schéma et écrit une version standard, `work/ingested/<source>.laz`, avec ses statistiques à côté (`<source>.json`). Toutes les étapes suivantes partent de là.
+L'ingestion lit chaque source, la rogne à la zone d'intérêt, uniformise ses labels selon sa correspondance des classes et écrit une version standard, `work/ingested/<source>.laz`, avec ses statistiques à côté (`<source>.json`). Toutes les étapes suivantes partent de là.
 
 ## Les formats lus
 
@@ -18,17 +18,17 @@ L'ingestion lit chaque source, la rogne à la zone d'intérêt, uniformise ses l
 
 Plusieurs fichiers d'une même source — des bandes d'un relevé mobile, par exemple — sont fusionnés en une seule source.
 
-## Les schémas : lire les classes d'une source
+## Les correspondances : lire les classes d'une source
 
-Un fichier qui porte déjà des classes les numérote à sa façon. Le **schéma sémantique** de la source dit à quelle classe du projet correspond chacun de ses codes. cdforge en livre pour ASPRS LAS 1.4, DALES, Paris-Lille-3D, SensatUrban, Toronto-3D, SemanticKITTI, nuScenes, Waymo et quelques autres ; `cdforge validate` vérifie le projet, ses fichiers et ses schémas. Le **schéma de changement** fait de même pour une source qui porte des labels de changement (Urb3DCD).
+Un fichier qui porte déjà des classes les numérote à sa façon. La **correspondance des classes** de la source dit à quelle classe du projet va chacun de ses codes. cdforge en livre pour ASPRS LAS 1.4, DALES, Paris-Lille-3D, SensatUrban, Toronto-3D, SemanticKITTI, nuScenes, Waymo et quelques autres ; `cdforge validate` vérifie le projet, ses fichiers et ses correspondances. La **correspondance des changements** fait de même pour une source qui porte des labels de changement (Urb3DCD). Ce sont les fichiers YAML du dossier `schemes/`.
 
-Sans schéma, la source est lue comme de la géométrie seule : ce sont les pré-labels qui proposeront les classes.
+Sans correspondance, la source est lue comme de la géométrie seule : ce sont les pré-labels qui proposeront les classes.
 
 ## L'onglet Configurer
 
 ![Ingestion — Configurer](img/ingest_configure.png)
 
-La liste des sources, avec leur capteur, leur schéma sémantique, leur statut (en attente, ingérée) et leur nombre de points. Les sources elles-mêmes se déclarent dans la **Configuration du projet** (voir [Créer et configurer un projet](02_projet.md)). **Exécuter cette étape** ingère celles qui ne le sont pas encore, ou dont le réglage a changé.
+La liste des sources, avec leur capteur, leur correspondance des classes, leur statut (en attente, ingérée) et leur nombre de points. Les sources elles-mêmes se déclarent dans la **Configuration du projet** (voir [Créer et configurer un projet](02_projet.md)). **Exécuter cette étape** ingère celles qui ne le sont pas encore, ou dont le réglage a changé.
 
 ## L'onglet Échantillonnage
 

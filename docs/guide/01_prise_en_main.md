@@ -63,11 +63,11 @@ Le bouton **?**, à droite du titre, ouvre le chapitre de ce guide consacré à 
 
 **Affichage** — **Actualiser** (F5, ou **⟳ Actualiser** en haut à droite) relit le projet sur le disque après un travail fait ailleurs (ligne de commande, annotateur, project.yaml modifié à la main), sans toucher aux réglages en cours d'édition ; thème sombre ou clair ; panneau de détails (Ctrl+J), dont la hauteur se règle à la souris ; panneau des tâches (Ctrl+T) ; détacher les tâches ou les détails dans une fenêtre (aussi le bouton ⧉ du panneau de détails ; fermer sa fenêtre le rattache) ; **Langue / Language** : le studio propose de redémarrer dans la langue choisie, et rouvre le même projet.
 
-**Aide** — Guide de l'utilisateur (F1), Démos interactives, les documents d'explication (comment le pré-label décide d'un changement, l'assistance sémantique SNAP, annoter les deux dates), Module IA…, Rechercher des mises à jour…, Rechercher les mises à jour au démarrage, À propos (qui donne la version).
+**Aide** — Guide de l'utilisateur (F1), Démos interactives, les documents d'explication (comment le pré-label décide d'un changement, l'assistance sémantique SNAP, annoter les deux dates), Module IA…, Rechercher des mises à jour…, Rechercher les mises à jour automatiquement, À propos (qui donne la version).
 
 ## Les mises à jour
 
-Au démarrage, au plus une fois par jour, le studio regarde si une version plus récente est publiée ; si oui, un bandeau l'annonce en haut de la fenêtre. **Aide ▸ Rechercher des mises à jour…** fait la même vérification à la demande, et **Rechercher les mises à jour au démarrage** la coupe.
+Au démarrage, puis toutes les 3 heures tant qu'il reste ouvert, le studio regarde si une version plus récente est publiée ; si oui, un bandeau l'annonce en haut de la fenêtre. **Plus tard** le fait taire jusqu'au prochain lancement. Un redémarrage dans les dix minutes ne refait pas la recherche. **Aide ▸ Rechercher des mises à jour…** la fait à la demande, et **Rechercher les mises à jour automatiquement** coupe les recherches automatiques. Le module IA installé passe par la même vérification (voir [Le module IA](07_ia.md#le-module-ia)).
 
 Avec l'AppImage, **Mettre à jour…** montre les nouveautés, puis télécharge la nouvelle AppImage **à côté** de celle qui tourne, sous son propre nom (`cdforge-<version>-x86_64.AppImage`). Elle n'est rendue exécutable qu'une fois sa somme de contrôle vérifiée : un téléchargement coupé ou abîmé n'installe rien. Le lanceur du menu, s'il désignait l'ancienne, désigne la nouvelle. **Relancer maintenant** ferme le studio, comme Quitter, et rouvre la nouvelle version sur le même projet ; l'ancienne est supprimée si la case est cochée. **Ignorer cette version** ne la propose plus au démarrage.
 
@@ -77,7 +77,7 @@ Installé autrement (pip, dépôt), le studio annonce la version et ouvre sa pag
 
 **Projet** — un dossier : `project.yaml` (toute la configuration), `raw/` (un emplacement pour les sources, qui peuvent aussi rester ailleurs), `work/` (fichiers intermédiaires : sources ingérées, recalage, tâches), `tiles/` (les tuiles), `exports/`, `reports/`, et `splits.json` une fois la répartition faite.
 
-**Source** — un relevé : un fichier ou plusieurs bandes fusionnées, avec son capteur (MLS, ULS, ALS, TLS…), son site, sa date, et éventuellement une trajectoire du capteur et un schéma qui dit comment lire ses classes.
+**Source** — un relevé : un fichier ou plusieurs bandes fusionnées, avec son capteur (MLS, ULS, ALS, TLS…), son site, sa date, et éventuellement une trajectoire du capteur et une correspondance qui dit comment lire ses classes.
 
 **Paire** — deux sources d'un même site : **t0**, la plus ancienne, et **t1**, la plus récente. Elles sont recalées puis tuilées ensemble.
 

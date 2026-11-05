@@ -1,6 +1,6 @@
 # Ingestion
 
-Ingestion reads every source, crops it to the area of interest, harmonises its labels with its scheme and writes a standard version, `work/ingested/<source>.laz`, with its statistics next to it (`<source>.json`). Every later stage starts from there.
+Ingestion reads every source, crops it to the area of interest, harmonises its labels with its class mapping and writes a standard version, `work/ingested/<source>.laz`, with its statistics next to it (`<source>.json`). Every later stage starts from there.
 
 ## Formats read
 
@@ -18,17 +18,17 @@ Ingestion reads every source, crops it to the area of interest, harmonises its l
 
 Several files of the same source — the strips of a mobile survey, for instance — are merged into one source.
 
-## Schemes: reading a source's classes
+## Mappings: reading a source's classes
 
-A file that already carries classes numbers them its own way. The source's **semantic scheme** says which project class each of its codes maps to. cdforge ships schemes for ASPRS LAS 1.4, DALES, Paris-Lille-3D, SensatUrban, Toronto-3D, SemanticKITTI, nuScenes, Waymo and a few others; `cdforge validate` checks the project, its files and its schemes. The **change scheme** does the same for a source carrying change labels (Urb3DCD).
+A file that already carries classes numbers them its own way. The source's **class mapping** says which project class each of its codes goes to. cdforge ships mappings for ASPRS LAS 1.4, DALES, Paris-Lille-3D, SensatUrban, Toronto-3D, SemanticKITTI, nuScenes, Waymo and a few others; `cdforge validate` checks the project, its files and its mappings. The **change mapping** does the same for a source carrying change labels (Urb3DCD). They are the YAML files of the `schemes/` folder.
 
-Without a scheme, the source is read as geometry only: pre-labels will propose the classes.
+Without a mapping, the source is read as geometry only: pre-labels will propose the classes.
 
 ## The Configure tab
 
 ![Ingestion — Configure](img/ingest_configure.png)
 
-The list of sources, with their sensor, semantic scheme, status (pending, ingested) and number of points. The sources themselves are declared in the **Project configuration** (see [Creating and configuring a project](02_project.md)). **Run this step** ingests those not yet ingested, or whose setting changed.
+The list of sources, with their sensor, class mapping, status (pending, ingested) and number of points. The sources themselves are declared in the **Project configuration** (see [Creating and configuring a project](02_project.md)). **Run this step** ingests those not yet ingested, or whose setting changed.
 
 ## The Sampling tab
 

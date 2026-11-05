@@ -9,7 +9,7 @@ Le dossier du projet (celui qui contient `project.yaml`) est le dernier argument
 | Commande | Ce qu'elle fait | Options utiles |
 |---|---|---|
 | `cdforge init DOSSIER` | crée un projet : `project.yaml` commenté, dossiers, 10 classes de base | |
-| `cdforge validate` | vérifie `project.yaml`, les fichiers sources et les schémas de labels | |
+| `cdforge validate` | vérifie `project.yaml`, les fichiers sources et les correspondances de classes | |
 | `cdforge ingest` | lit, rogne, uniformise les labels, écrit `work/ingested/*.laz` | `--source`, `--overwrite` |
 | `cdforge align` | recale t1 sur t0 | `--pair`, `--overwrite`, `--implementation` |
 | `cdforge tile` | découpe chaque paire en tuiles | `--pair`, `--size`, `--overlap`, `--min-points`, `--workers`, `--overwrite` |
@@ -30,7 +30,7 @@ Le dossier du projet (celui qui contient `project.yaml`) est le dernier argument
 | `cdforge models` | le catalogue ; `--model NOM` pour le détail d'un modèle |
 | `cdforge fetch-weights MODÈLE` | télécharge les poids et vérifie leur empreinte |
 | `cdforge stage-inference MODÈLE` | prépare les tuiles pour le modèle et affiche la commande d'inférence (`--python` : l'interpréteur où torch est installé) |
-| `cdforge import-predictions DOSSIER` | importe des prédictions `<tuile>/<époque>_semantic.npy` comme pré-labels (`--scheme`, `--min-conf`, `--keep-low-conf`, `--reset-auto`) |
+| `cdforge import-predictions DOSSIER` | importe des prédictions `<tuile>/<époque>_semantic.npy` comme pré-labels (`--scheme`, obligatoire pour un modèle du catalogue, `--min-conf`, `--keep-low-conf`, `--reset-auto`) |
 
 ## L'annotation
 

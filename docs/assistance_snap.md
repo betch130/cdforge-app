@@ -86,7 +86,7 @@ du code des auteurs :
 
 L'intérieur et l'aérien ont appris **avec la couleur**. Une tuile sans RVB
 leur est envoyée en gris neutre, et la ligne d'état le signale (« sans
-couleur »). Seuls les noms de la route ont une traduction vérifiée vers les
+couleur »). Seuls les noms de la route ont une correspondance vérifiée vers les
 classes du projet ; ailleurs, le nom proposé passe par la ressemblance des
 noms (voir la section 4).
 
@@ -121,19 +121,19 @@ D'où la comparaison, et d'où la règle : un nom n'est jamais appliqué seul.
 - **→ vegetation** : la classe du projet retenue.
 - **IoU prédit** : la qualité que le modèle prête à son propre masque. Sous
   0,5, un second clic (Maj+G) vaut souvent la peine.
-- **La dernière mention** dit comment le nom a été traduit (voir section 4).
+- **La dernière mention** dit comment le nom est devenu une classe du projet (voir section 4).
 
 ---
 
 ## 4. Du nom du modèle à la classe du projet
 
 Le vocabulaire de SNAP en extérieur, ce sont les 19 classes de SemanticKITTI,
-dans l'ordre exact du schéma `semantickitti19` de cdforge. La traduction suit
-trois étapes :
+dans l'ordre exact de la correspondance `semantickitti19` de cdforge. Le nom
+proposé devient une classe du projet en trois étapes :
 
 1. **Le nom lui-même**, s'il est une classe, un alias ou un groupe du projet.
    C'est le cas d'un projet qui a gardé les classes d'un modèle.
-2. **Le schéma vérifié** `semantickitti19`. C'est lui qui sait que « Trunk »
+2. **La correspondance vérifiée** `semantickitti19`. C'est elle qui sait que « Trunk »
    est un arbre (`high_vegetation`), qu'un « Bicyclist » est une personne et
    que « Terrain » est un sol naturel.
 3. **Le repli** : une classe absente du projet va à la base de son groupe.

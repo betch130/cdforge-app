@@ -40,11 +40,11 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | packaging | 26.3 | Apache-2.0 OR BSD-2-Clause |
 | pillow | 13.0.0 | MIT-CMU |
 | pip | 26.2.2 | MIT |
-| platformdirs | 4.14.3 | MIT |
+| platformdirs | 4.14.5 | MIT |
 | pooch | 1.9.0 | BSD-3-Clause |
 | psutil | 7.2.2 | BSD-3-Clause |
-| pydantic | 2.14.2 | MIT |
-| pydantic_core | 2.50.2 | MIT |
+| pydantic | 2.14.3 | MIT |
+| pydantic_core | 2.50.4 | MIT |
 | pye57 | 0.4.19 | MIT License |
 | Pygments | 2.21.0 | BSD-2-Clause |
 | pyparsing | 3.3.3 | MIT |
@@ -65,9 +65,9 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | scooby | 0.12.1 | MIT |
 | shellingham | 1.5.4 | ISC License (ISCL) |
 | shiboken6 | 6.12.0 | LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only |
-| threadpoolctl | 3.7.0 | BSD-3-Clause |
+| threadpoolctl | 3.8.0 | BSD-3-Clause |
 | typer | 0.27.3 | MIT |
-| typing-inspection | 0.4.4 | MIT |
+| typing-inspection | 0.4.5 | MIT |
 | typing_extensions | 4.16.0 | PSF-2.0 |
 | tzdata | 2026.6 | Apache-2.0 |
 | urllib3 | 2.8.0 | MIT |

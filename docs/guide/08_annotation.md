@@ -68,7 +68,7 @@ La **coupe** se trace avec **C** dans le plan ; **,** et **.** la décalent d'un
 - **Note sur la tuile**.
 - **Fin de tuile** — enregistrer (Ctrl+S), marquer la tuile terminée, **terminé et tuile suivante** (Ctrl+D), rouvrir, rejeter.
 
-Une tuile passe par les statuts *tuilée → pré-labellisée → en cours → terminée* (ou *rejetée*). Le pré-label ne retouche jamais une tuile en cours ou terminée.
+Une tuile passe par les statuts *tuilée → pré-labellisée → en cours → terminée* (ou *rejetée*). Le pré-label ne retouche jamais une tuile en cours, terminée ou rejetée : un rejet est une décision, comme une validation.
 
 ## Comprendre un label : la touche R
 

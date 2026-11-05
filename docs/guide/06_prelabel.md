@@ -19,20 +19,35 @@ Chaque époque est étiquetée à son tour contre l'autre, **avec exactement le 
 
 **M3C2** (par défaut) mesure l'écart le long de la normale locale, dans un cylindre, et calcule un **seuil de détection par point** (LoD95) à partir de la rugosité des deux nuages et de l'erreur de recalage. Sensible aux petits déplacements, il lui faut des normales fiables. La règle **même surface** ne garde, dans le cylindre d'un point plan, que les voisins orientés comme lui : le cylindre d'un point de sol n'attrape plus le mur voisin.
 
-**C2C** prend la distance au plus proche voisin : pas de normales, environ 2,7 fois plus rapide, robuste sur une géométrie bruitée ou éparse. Son seuil, en automatique, vaut 1,96 × l'erreur de recalage **plus l'espacement des points** — deux relevés d'une même surface ne tombent jamais pile l'un sur l'autre — donc les petits déplacements lui échappent. On peut aussi le **fixer à la main**. La distance mesurée ne dépasse jamais la **portée de la mesure** — au-delà, rien n'est mesuré, et la couverture ou les rayons répondent : un seuil égal ou supérieur à la portée n'est donc jamais franchi, et le formulaire le signale.
+**C2C** prend la distance au plus proche voisin : pas de normales, environ 2,7 fois plus rapide, robuste sur une géométrie bruitée ou éparse. Son seuil, en automatique, vaut 1,96 × l'erreur de recalage **plus l'espacement des points** — deux relevés d'une même surface ne tombent jamais pile l'un sur l'autre — donc les petits déplacements lui échappent. On peut aussi le **fixer à la main**.
+
+C2C règle deux distances, qui répondent à deux questions l'une après l'autre :
+
+1. **La portée de la mesure** (0,5 m par défaut) : *peut-on mesurer ce point ?* On cherche l'autre époque autour de lui, jusqu'à cette distance. S'il n'y a pas assez de points (`min_pts`), rien n'est mesuré : la couverture ou les rayons disent si l'autre époque voyait l'endroit — si oui, le point a disparu ; sinon, il était caché.
+2. **Le seuil de changement** (en auto, l'erreur de recalage plus l'espacement des points) : *le point mesuré a-t-il bougé ?* Il absorbe l'écart normal entre deux relevés d'une même surface.
+
+Par exemple, avec une portée de 0,5 m et un seuil de 3 cm, le plus proche point de l'autre époque est :
+
+| à… | verdict |
+|---|---|
+| 1 cm | inchangé |
+| 20 cm | changé |
+| rien à moins de 0,5 m | pas de mesure : disparu ou caché |
+
+Le seuil doit donc rester **plus petit que la portée** : une distance mesurée ne dépasse jamais la portée, et un seuil au-dessus ne serait jamais franchi. Le formulaire écrit ces trois cas avec vos valeurs, et prévient quand le seuil atteint la portée.
 
 ### « B regardait-il cet endroit ? »
 
-- **La couverture**, toujours calculée : B a-t-il un point dans la même case au sol, un point proche (`obs_radius`), des points sur assez de côtés (`obs_quadrants`) ? Chaque portion se coupe séparément. Elle confond une occultation qui laisse des points à proximité avec une disparition.
+- **La couverture**, toujours calculée, et seule à répondre sans trajectoire. On ne sait pas d'où B regardait : on regarde seulement s'il a des points tout autour. Le point est **observé** si B a un point dans la même case au sol (1 m par défaut) **ou** à moins de 2 m (`obs_radius`), **et** des points dans au moins 3 des 4 quarts autour de lui (`obs_quadrants`) — des points d'un seul côté, c'est le bord du relevé. Observé → disparu ; sinon → *unobserved*. Chaque portion se coupe séparément. **Sa limite** : elle ne voit pas ce qui cache. Une façade masquée par un camion a le camion tout près, passe pour observée, donc disparue — un faux changement.
 - **Les rayons**, quand la source B a une **trajectoire** : la ligne du capteur au point traverse-t-elle du vide (l'endroit était vu, l'objet a disparu) ou un obstacle (il était caché) ? Ils tranchent vraiment, mais seulement là où un point de vue existe ; ailleurs, la couverture répond.
 
 ## La sémantique
 
 Plusieurs sources, qui se complètent, sans jamais écraser un label importé ou manuel :
 
-- **les classes de la source**, lues à l'ingestion par son schéma ;
+- **les classes de la source**, lues à l'ingestion par sa correspondance des classes ;
 - **le modèle géométrique intégré** : la forme locale du nuage — hauteur au-dessus du sol, linéarité, planarité, dispersion, verticalité — distingue sol, bâti, végétation, poteaux ; aucune dépendance ;
-- **le transfert entre époques** : un point inchangé et sans classe reçoit le vote majoritaire de ses `transfer_k` plus proches voisins étiquetés dans l'autre époque (confiance = part du vote) ; un point changé n'hérite jamais ;
+- **le transfert entre époques** : un point inchangé et sans classe reçoit le vote majoritaire de ses `transfer_k` plus proches voisins étiquetés dans l'autre époque (confiance = part du vote) ; un point changé n'hérite jamais. Les deux époques votent avec ce qu'elles portent hors transfert. Chaque passage défait d'abord le transfert précédent, puis le refait s'il est allumé : relancer le pré-label ne l'étend pas, et le couper retire ce qu'il avait posé, sauf ce qu'un geste ou un import a repris depuis ;
 - **un modèle d'apprentissage profond**, lancé depuis l'onglet Modèle sémantique ou importé (voir [Modèles sémantiques](07_ia.md)).
 
 Le **sol par simulation de tissu** (CSF) se règle dans l'annotateur, sur une tuile qu'on regarde, puis s'applique aux autres.

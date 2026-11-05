@@ -19,20 +19,35 @@ Each epoch is labelled in turn against the other, **with exactly the same code**
 
 **M3C2** (default) measures the gap along the local normal, in a cylinder, and computes a **per-point detection threshold** (LoD95) from the roughness of both clouds and the registration error. Sensitive to small displacements, it needs reliable normals. The **same surface** rule keeps, in the cylinder of a planar point, only the neighbours oriented like it: a ground point's cylinder no longer catches the neighbouring wall.
 
-**C2C** takes the distance to the nearest neighbour: no normals, about 2.7 times faster, robust on noisy or sparse geometry. On auto, its threshold is 1.96 × the registration error **plus the point spacing** — two surveys of the same surface never land exactly on top of each other — so small displacements escape it. It can also be **set by hand**. The measured distance never exceeds the **measurement reach** — beyond it, nothing is measured, and coverage or rays answer: a threshold equal to or above the reach is therefore never crossed, and the form flags it.
+**C2C** takes the distance to the nearest neighbour: no normals, about 2.7 times faster, robust on noisy or sparse geometry. On auto, its threshold is 1.96 × the registration error **plus the point spacing** — two surveys of the same surface never land exactly on top of each other — so small displacements escape it. It can also be **set by hand**.
+
+C2C sets two distances, which answer two questions one after the other:
+
+1. **The measurement reach** (0.5 m by default): *can this point be measured?* The other epoch is searched around it, up to this distance. If there are not enough points (`min_pts`), nothing is measured: coverage or rays tell whether the other epoch was looking at the place — if so, the point is gone; if not, it was hidden.
+2. **The change threshold** (on auto, the registration error plus the point spacing): *has the measured point moved?* It absorbs the normal gap between two surveys of the same surface.
+
+For example, with a 0.5 m reach and a 3 cm threshold, the nearest point of the other epoch is:
+
+| at… | verdict |
+|---|---|
+| 1 cm | unchanged |
+| 20 cm | changed |
+| nothing within 0.5 m | no measurement: gone or hidden |
+
+The threshold must therefore stay **smaller than the reach**: a measured distance never exceeds the reach, and a threshold above it would never be crossed. The form writes these three cases with your values, and warns when the threshold reaches the reach.
 
 ### "Was B looking at this spot?"
 
-- **Coverage**, always computed: does B have a point in the same ground cell, a nearby point (`obs_radius`), points on enough sides (`obs_quadrants`)? Each part can be switched off on its own. It confuses an occlusion that leaves points nearby with a disappearance.
+- **Coverage**, always computed, and the only answer without a trajectory. We do not know where B was looking from: we only check whether it has points all around. The point is **observed** if B has a point in the same ground cell (1 m by default) **or** within 2 m (`obs_radius`), **and** points in at least 3 of the 4 quarters around it (`obs_quadrants`) — points on one side only are the edge of the survey. Observed → gone; otherwise → *unobserved*. Each part can be switched off on its own. **Its limit**: it does not see what hides. A façade masked by a truck has the truck right next to it, passes for observed, hence gone — a false change.
 - **Rays**, when source B has a **trajectory**: does the line from the sensor to the point cross empty space (the spot was seen, the object is gone) or an obstacle (it was hidden)? They really decide, but only where a viewpoint exists; elsewhere, coverage answers.
 
 ## Semantics
 
 Several sources, which complement each other, never overwriting an imported or manual label:
 
-- **the source's classes**, read at ingestion through its scheme;
+- **the source's classes**, read at ingestion through its class mapping;
 - **the built-in geometric model**: the local shape of the cloud — height above ground, linearity, planarity, scatter, verticality — tells ground, buildings, vegetation, poles apart; no dependency;
-- **transfer between epochs**: an unchanged point without a class gets the majority vote of its `transfer_k` nearest labelled neighbours in the other epoch (confidence = vote share); a changed point never inherits;
+- **transfer between epochs**: an unchanged point without a class gets the majority vote of its `transfer_k` nearest labelled neighbours in the other epoch (confidence = vote share); a changed point never inherits. Both epochs vote with what they carry apart from the transfer. Each run first undoes the previous transfer, then redoes it if it is on: rerunning the pre-label does not spread it further, and switching it off removes what it had set, except what a gesture or an import has taken over since;
 - **a deep-learning model**, run from the Semantic model tab or imported (see [Semantic models](07_ai.md)).
 
 The **ground by cloth simulation** (CSF) is tuned in the annotator, on a tile you are looking at, then applied to the others.

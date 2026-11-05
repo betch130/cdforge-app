@@ -68,7 +68,7 @@ The **section** is drawn with **C** in the plan; **,** and **.** shift it by one
 - **Tile note**.
 - **End of tile** — save (Ctrl+S), mark the tile done, **done and next tile** (Ctrl+D), reopen, reject.
 
-A tile goes through the statuses *tiled → pre-labelled → in progress → done* (or *rejected*). Pre-labelling never touches a tile in progress or done.
+A tile goes through the statuses *tiled → pre-labelled → in progress → done* (or *rejected*). Pre-labelling never touches a tile in progress, done or rejected: a rejection is a decision, like a validation.
 
 ## Understanding a label: the R key
 

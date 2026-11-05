@@ -85,7 +85,7 @@ the authors' code:
 
 Indoor and aerial were trained **with colour**. A tile without RGB is sent to
 them in neutral grey, and the status line says so (“without colour”). Only
-the road names have a verified translation to the project's classes;
+the road names have a verified mapping to the project's classes;
 elsewhere, the proposed name goes through name similarity (see section 4).
 
 **Compare with…** runs the same object again, with the same clicks, on
@@ -119,19 +119,19 @@ Hence the comparison, and hence the rule: a name is never applied on its own.
 - **→ vegetation**: the project class chosen.
 - **Predicted IoU**: the quality the model gives its own mask. Below 0.5, a
   second click (Shift+G) is often worth it.
-- **The last mention** says how the name was translated (see section 4).
+- **The last mention** says how the name became a project class (see section 4).
 
 ---
 
 ## 4. From the model's name to the project's class
 
 SNAP's outdoor vocabulary is the 19 SemanticKITTI classes, in the exact
-order of cdforge's `semantickitti19` scheme. The translation follows three
-steps:
+order of cdforge's `semantickitti19` mapping. The proposed name becomes a
+project class in three steps:
 
 1. **The name itself**, if it is a class, an alias or a group of the
    project. This is the case for a project that kept a model's classes.
-2. **The verified scheme** `semantickitti19`. It knows that “Trunk” is a
+2. **The verified mapping** `semantickitti19`. It knows that “Trunk” is a
    tree (`high_vegetation`), that a “Bicyclist” is a person and that
    “Terrain” is natural ground.
 3. **The fallback**: a class missing from the project goes to the base of

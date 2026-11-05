@@ -63,11 +63,11 @@ The **?** button, right of the title, opens this guide's chapter on the stage.
 
 **View** — **Refresh** (F5, or **⟳ Refresh** at the top right) re-reads the project from disk after work done elsewhere (command line, annotator, project.yaml edited by hand), without touching the settings being edited; dark or light theme; details panel (Ctrl+J), whose height is set with the mouse; tasks panel (Ctrl+T); detach the tasks or the details into a window (also the panel's ⧉ button; closing its window puts it back); **Langue / Language**: the studio offers to restart in the chosen language, and reopens the same project.
 
-**Help** — User guide (F1), Interactive demos, the explanation documents (how pre-labelling decides on a change, SNAP semantic assistance, annotating both dates), AI module…, Check for updates…, Check for updates at startup, About (which gives the version).
+**Help** — User guide (F1), Interactive demos, the explanation documents (how pre-labelling decides on a change, SNAP semantic assistance, annotating both dates), AI module…, Check for updates…, Check for updates automatically, About (which gives the version).
 
 ## Updates
 
-At startup, at most once a day, the studio checks whether a newer version is published; if so, a banner announces it at the top of the window. **Help ▸ Check for updates…** runs the same check on demand, and **Check for updates at startup** turns it off.
+At startup, then every 3 hours while it stays open, the studio checks whether a newer version is published; if so, a banner announces it at the top of the window. **Later** silences it until the next launch. Restarting within ten minutes does not check again. **Help ▸ Check for updates…** checks on demand, and **Check for updates automatically** turns the automatic checks off. An installed AI module goes through the same check (see [The AI module](07_ai.md#the-ai-module)).
 
 With the AppImage, **Update…** shows what is new, then downloads the new AppImage **next to** the running one, under its own name (`cdforge-<version>-x86_64.AppImage`). It is made executable only once its checksum is verified: an interrupted or damaged download installs nothing. The menu launcher, if it pointed to the old one, now points to the new one. **Restart now** closes the studio, like Quit, and reopens the new version on the same project; the old one is deleted if the box is ticked. **Skip this version** stops offering it at startup.
 
@@ -77,7 +77,7 @@ Installed another way (pip, repository), the studio announces the version and op
 
 **Project** — a folder: `project.yaml` (the whole configuration), `raw/` (a place for the sources, which may also live elsewhere), `work/` (intermediate files: ingested sources, registration, tasks), `tiles/` (the tiles), `exports/`, `reports/`, and `splits.json` once the split is made.
 
-**Source** — one survey: one file or several merged strips, with its sensor (MLS, ULS, ALS, TLS…), its site, its date, and optionally a sensor trajectory and a scheme that says how to read its classes.
+**Source** — one survey: one file or several merged strips, with its sensor (MLS, ULS, ALS, TLS…), its site, its date, and optionally a sensor trajectory and a mapping that says how to read its classes.
 
 **Pair** — two sources of the same site: **t0**, the older, and **t1**, the more recent. They are registered and then tiled together.
 

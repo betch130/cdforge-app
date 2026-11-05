@@ -25,8 +25,8 @@ Pour chaque source :
 - **ID** — unique dans le projet ;
 - **Capteur** — MLS, ALS, ULS, TLS, SYN (synthétique) ou other ;
 - **Site** et **Époque** (par exemple `2023-06`) — deux sources du même site forment une paire ;
-- **Schéma sémantique** — comment lire les classes que porte le fichier (`asprs_las14`, `toronto3d`, `semantickitti19`…) ; vide si le fichier n'a pas de classes ;
-- **Schéma de changement** — pour un fichier qui porte déjà des labels de changement (`urb3dcd_v2`) ; vide sinon ;
+- **Correspondance des classes** — comment lire les classes que porte le fichier (`asprs_las14`, `toronto3d`, `semantickitti19`…) ; vide si le fichier n'a pas de classes ;
+- **Correspondance des changements** — pour un fichier qui porte déjà des labels de changement (`urb3dcd_v2`) ; vide sinon ;
 - **Trajectoire** — facultative : le fichier CSV des positions du capteur. Elle permet au pré-label de lancer des rayons du capteur vers les points (voir [Pré-labellisation](06_prelabel.md)).
 
 Une source peut n'avoir aucun label : c'est le cas général, et les pré-labels sont là pour ça. Si les fichiers ajoutés ne portent pas le même CRS, ou pas celui déclaré à la page précédente, l'assistant l'affiche : rien en aval ne le rattraperait.
@@ -65,7 +65,7 @@ Le lien **Configuration du projet** de l'en-tête (ou **Projet ▸ Configuration
 Chaque projet part de **10 classes de base** : ground, building, vegetation, vehicle, person, pole_utility, street_furniture, barrier, water, other. Les noms sont en anglais, et c'est le nom affiché. L'assistant et `cdforge init` les écrivent dans `taxonomy.yaml`, à la racine du projet ; un projet qui pointe encore vers une liste livrée avec cdforge en reçoit une copie à la première modification — la liste du paquet n'est jamais modifiée.
 
 - **Ajouter…** — une classe plus fine **sous une classe de base** (`street_light` sous `pole_utility` : l'export en classes de base la compte dans son groupe), ou une **nouvelle classe de base** (`rail`) ; il faut alors dire si ce qu'elle désigne est **permanent** ou **temporaire**.
-- **Renommer…** — l'ancien nom reste compris : les traductions de schéma qui le citent visent toujours cette classe.
+- **Renommer…** — l'ancien nom reste compris : les correspondances qui le citent visent toujours cette classe.
 - **Couleur…**
 - **Permanent / temporaire** — vaut pour tout le groupe. Dans l'annotateur, un changement porté par une classe temporaire (un véhicule garé à t0, parti à t1) peut être requalifié en *transient*.
 - **Fusionner dans…** — remappe une classe vers une autre sur tout le projet : chaque point qui la porte, dans toutes les couches de toutes les tuiles, passe à l'autre ; puis elle quitte la liste.
@@ -86,7 +86,7 @@ Cinq classes, aux identifiants fixes : *unchanged* (0), *added* (1), *removed* (
 
 ```bash
 cdforge init mon_projet       # project.yaml commenté et dossiers
-cdforge validate mon_projet   # vérifie project.yaml, les fichiers sources et les schémas
+cdforge validate mon_projet   # vérifie project.yaml, les fichiers sources et les correspondances
 ```
 
 Étape suivante : [Ingestion](03_ingestion.md).
