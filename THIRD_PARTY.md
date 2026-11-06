@@ -66,7 +66,7 @@ L'application et le module IA incluent les composants ci-dessous, chacun sous sa
 | shellingham | 1.5.4 | ISC License (ISCL) |
 | shiboken6 | 6.12.0 | LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only |
 | threadpoolctl | 3.8.0 | BSD-3-Clause |
-| typer | 0.27.3 | MIT |
+| typer | 0.28.0 | MIT |
 | typing-inspection | 0.4.5 | MIT |
 | typing_extensions | 4.16.0 | PSF-2.0 |
 | tzdata | 2026.6 | Apache-2.0 |

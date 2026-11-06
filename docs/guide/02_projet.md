@@ -80,7 +80,7 @@ Un modèle sémantique peut prédire des classes que la liste n'a pas : c'est à
 
 ![Les classes de changement](img/change_classes.png)
 
-Cinq classes, aux identifiants fixes : *unchanged* (0), *added* (1), *removed* (2), *transient* (3), *unobserved* (4), cette dernière rangée sous *unchanged*. Elles ne s'ajoutent ni ne se renomment : le pré-label, l'annotateur et l'export les reconnaissent par leur nom. Leur **couleur** et leur **description** se modifient ; comme pour les classes sémantiques, la première modification écrit une copie dans le projet, `change_taxonomy.yaml`.
+Cinq classes, aux identifiants fixes : *unchanged* (0), *added* (1), *removed* (2), *transient* (3), *unobserved* (4), cette dernière rangée sous *unchanged*. Ces cinq-là ne se renomment ni ne se retirent : le pré-label, l'annotateur et l'export les reconnaissent par leur nom. On peut en **ajouter** d'autres sous elles, qui en prennent le sens : « new_building » rangée sous *added* ne vaut qu'en t1 et s'exporte comme *added*, sauf si la table d'export la nomme. Une classe ajoutée se renomme (l'ancien nom reste compris), se **fusionne** dans une autre (sur toutes les tuiles ; pas dans une classe qui n'existe qu'à l'autre date) et se **retire** quand plus aucun point ne la porte. La **couleur** et la **description** de toutes se modifient ; comme pour les classes sémantiques, la première modification écrit une copie dans le projet, `change_taxonomy.yaml`.
 
 ## En ligne de commande
 

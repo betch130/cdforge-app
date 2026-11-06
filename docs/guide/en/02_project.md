@@ -80,7 +80,7 @@ A semantic model may predict classes the list lacks: they are added or filed whe
 
 ![The change classes](img/change_classes.png)
 
-Five classes, with fixed ids: *unchanged* (0), *added* (1), *removed* (2), *transient* (3), *unobserved* (4), the last filed under *unchanged*. They cannot be added or renamed: pre-labelling, the annotator and the export recognise them by name. Their **colour** and **description** can be changed; as with the semantic classes, the first change writes a copy into the project, `change_taxonomy.yaml`.
+Five classes, with fixed ids: *unchanged* (0), *added* (1), *removed* (2), *transient* (3), *unobserved* (4), the last filed under *unchanged*. These five cannot be renamed or removed: pre-labelling, the annotator and the export recognise them by name. Other classes can be **added** under them, and take their meaning: “new_building” filed under *added* applies at t1 only and exports as *added*, unless the export table names it. An added class can be renamed (the old name is still understood), **merged** into another (across all tiles; not into a class that exists at the other date only) and **removed** once no point carries it. Every class's **colour** and **description** can be changed; as with the semantic classes, the first change writes a copy into the project, `change_taxonomy.yaml`.
 
 ## On the command line
 
